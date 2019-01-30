@@ -1,0 +1,45 @@
+## Features
+	- Restaurant Webpage
+		- User
+			- Login page for users
+			- Welcome Screen
+				- Restaurant  box
+					- Restaurant  screen
+					- Order now
+			- Menu
+				- Categories
+				- Add to cart per item
+				- Checkout option
+			- Order summary
+				- List of items ordered
+				- Pricing
+				- Quantity
+				- Edit/delete per item
+				- Payment options
+					- in person or online (stretch)
+				- Submit order
+			- Order. Confirmation page
+				- Order number 
+				- Message
+		- Owner
+			- Login page for owner
+			- Welcome screen
+				- Open orders
+				- Time they committed
+				- Completed or not
+				- Time left
+				- Update time (if needed)
+			- Order view screen
+				- View order summary
+				- Commit to time and submit
+	- SMS and Email notification
+		- On placing order
+			- SMS goes out to customer confirming order
+				- Contain order number
+			- SMS goes out to owner notifying of an order
+				- Contains link or order
+		- On Confirming Ready time
+			- Customer gets a text confirming time
+		- On change of ready time
+			- Customer gets updated time 
+	
