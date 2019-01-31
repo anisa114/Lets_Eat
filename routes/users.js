@@ -14,13 +14,13 @@ router.get("/menu", (req, res) => {
     .then(menu_item => {
       // console.log(menu_item);
       category.forEach(catObj => {
-        console.log(catObj.id);
+        // console.log(catObj.id);
         let menu_array = menu_item.filter(menu_item => menu_item.category_id === catObj.id ) 
         // console.log(menu_array);
         menu[catObj.name] = menu_array;
       })
       // console.log(menu);
-      res.render("menu.ejs", {menu: menu});
+      // res.render("menu.ejs", {menu: menu});
     })
     .catch(err => console.log(err.message))
   })
