@@ -20,7 +20,7 @@ router.get("/menu", (req, res) => {
         menu[catObj.name] = menu_array;
       })
       // console.log(menu);
-      // res.render("menu.ejs", {menu: menu});
+      res.render("menu.ejs", {menu: menu});
     })
     .catch(err => console.log(err.message))
   })

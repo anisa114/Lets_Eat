@@ -9,6 +9,7 @@
 //   });;
 // });
 
+var cart = [];
 
 const addToCart = (element) => {
   let btnEl = $(element)
@@ -17,5 +18,18 @@ const addToCart = (element) => {
   let description = btnEl.siblings('.menu__item-description').text();
   let price = btnEl.siblings('.menu__item-price').text();
   console.log(quantity, name, description, price)
+
+  let item = {
+    name: name,
+    description: description,
+    price:price,
+    quantity: quantity
+  }
+  cart.push(item);
+  console.log(cart);
+
+
+  
 }
+
 
