@@ -48,7 +48,10 @@ app.get("/contacts", (req, res) => {
   res.render("contacts");
 });
 
-
+//Info Page
+app.get("/restaurants/info", (req, res) => {
+  res.render("info");
+});
 
 
 
