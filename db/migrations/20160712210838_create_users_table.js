@@ -3,14 +3,14 @@ exports.up = function(knex, Promise) {
     table.increments('id').primary();
     table.string('first_name');
     table.string('last_name');
-    table.integer('phone_no');
+    table.bigInteger('phone_no');
     table.string('email');
     table.string('password');
     table.string('role');
   })
   .createTable('order', table => {
     table.increments('id').primary();
-    table.integer('ref_no');
+    table.bigInteger('ref_no');
     table.integer('ready_time');
     table.integer('user_id').references('id').inTable('users');
   })
@@ -21,7 +21,7 @@ exports.up = function(knex, Promise) {
   .createTable('menu_item', table => {
     table.increments('id').primary();
     table.string('name');
-    table.integer('price');
+    table.float('price');
     table.integer('category_id').references('id').inTable('category');
     table.string('description');
     table.string('image_url');
@@ -31,7 +31,7 @@ exports.up = function(knex, Promise) {
     table.integer('order_id').references('id').inTable('order');
     table.integer('menu_item_id').references('id').inTable('menu_item');
     table.string('name');
-    table.integer('price');
+    table.float('price');
   })
 };
 
