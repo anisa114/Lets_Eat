@@ -7,6 +7,8 @@ exports.seed = function(knex, Promise) {
         // Inserts seed entries
         knex('category').insert({name: 'Pizza'}),
         knex('category').insert({name: 'Pasta'}),
+        knex('category').insert({name: 'Burgers and Sandwiches'}),
+        knex('category').insert({name: 'Mains'}),
       ]);
     });
 };
