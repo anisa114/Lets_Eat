@@ -3,8 +3,6 @@
   <head>
     <title>Home Page</title>
 
-    <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
-    <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
     <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
@@ -15,7 +13,12 @@
   <body>
     <header class="header">
       <nav class="nav">
-        <p class="logo__logo">Let's<span class="logo__logo--sub">Eat</span></p>
+        <p class="nav__logo">Let's<span class="nav__logo--sub">Eat</span></p>
+        <ul class="nav__items">
+          <li class="nav__item"><a href="/restaurants">Home</a></li>
+          <li class="nav__item"><a href="/contact">Contact Us</a></li>
+          <li class="nav__item"><a href="/cart">Cart</a></li>
+        </ul>
       </nav>
     </header>
   </body>
