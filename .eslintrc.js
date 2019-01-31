@@ -16,8 +16,22 @@ module.exports = {
         "array-callback-return": "error",
         "array-element-newline": "error",
         "arrow-body-style": "error",
+<<<<<<< HEAD
         "arrow-parens": "error",
         "arrow-spacing": "error",
+=======
+        "arrow-parens": [
+            "error",
+            "as-needed"
+        ],
+        "arrow-spacing": [
+            "error",
+            {
+                "after": true,
+                "before": true
+            }
+        ],
+>>>>>>> e32146e4b79c0c9cda65f757effc7464ca5dad7d
         "block-scoped-var": "error",
         "block-spacing": "error",
         "brace-style": "error",
@@ -26,24 +40,46 @@ module.exports = {
         "capitalized-comments": "error",
         "class-methods-use-this": "error",
         "comma-dangle": "error",
+<<<<<<< HEAD
         "comma-spacing": "error",
         "comma-style": [
             "error",
             "last"
         ],
+=======
+        "comma-spacing": [
+            "error",
+            {
+                "after": true,
+                "before": false
+            }
+        ],
+        "comma-style": "error",
+>>>>>>> e32146e4b79c0c9cda65f757effc7464ca5dad7d
         "complexity": "error",
         "computed-property-spacing": "error",
         "consistent-return": "error",
         "consistent-this": "error",
         "curly": "error",
         "default-case": "error",
+<<<<<<< HEAD
         "dot-location": "error",
+=======
+        "dot-location": [
+            "error",
+            "property"
+        ],
+>>>>>>> e32146e4b79c0c9cda65f757effc7464ca5dad7d
         "dot-notation": "error",
         "eol-last": "error",
         "eqeqeq": "error",
         "func-call-spacing": "error",
         "func-name-matching": "error",
+<<<<<<< HEAD
         "func-names": "error",
+=======
+        "func-names": "off",
+>>>>>>> e32146e4b79c0c9cda65f757effc7464ca5dad7d
         "func-style": "error",
         "function-paren-newline": "error",
         "generator-star-spacing": "error",
@@ -53,12 +89,23 @@ module.exports = {
         "id-blacklist": "error",
         "id-length": "error",
         "id-match": "error",
+<<<<<<< HEAD
         "implicit-arrow-linebreak": "error",
+=======
+        "implicit-arrow-linebreak": [
+            "error",
+            "beside"
+        ],
+>>>>>>> e32146e4b79c0c9cda65f757effc7464ca5dad7d
         "indent": "off",
         "indent-legacy": "off",
         "init-declarations": "error",
         "jsx-quotes": "error",
+<<<<<<< HEAD
         "key-spacing": "off",
+=======
+        "key-spacing": "error",
+>>>>>>> e32146e4b79c0c9cda65f757effc7464ca5dad7d
         "keyword-spacing": "error",
         "line-comment-position": "error",
         "linebreak-style": [
@@ -83,7 +130,11 @@ module.exports = {
         "new-parens": "error",
         "newline-after-var": "error",
         "newline-before-return": "error",
+<<<<<<< HEAD
         "newline-per-chained-call": "error",
+=======
+        "newline-per-chained-call": "off",
+>>>>>>> e32146e4b79c0c9cda65f757effc7464ca5dad7d
         "no-alert": "error",
         "no-array-constructor": "error",
         "no-async-promise-executor": "error",
@@ -123,7 +174,11 @@ module.exports = {
         "no-multi-assign": "error",
         "no-multi-spaces": "error",
         "no-multi-str": "error",
+<<<<<<< HEAD
         "no-multiple-empty-lines": "error",
+=======
+        "no-multiple-empty-lines": "off",
+>>>>>>> e32146e4b79c0c9cda65f757effc7464ca5dad7d
         "no-native-reassign": "error",
         "no-negated-condition": "error",
         "no-negated-in-lhs": "error",
@@ -137,7 +192,11 @@ module.exports = {
         "no-param-reassign": "error",
         "no-path-concat": "error",
         "no-plusplus": "error",
+<<<<<<< HEAD
         "no-process-env": "off",
+=======
+        "no-process-env": "error",
+>>>>>>> e32146e4b79c0c9cda65f757effc7464ca5dad7d
         "no-process-exit": "error",
         "no-proto": "error",
         "no-prototype-builtins": "error",
@@ -159,7 +218,10 @@ module.exports = {
         "no-template-curly-in-string": "error",
         "no-ternary": "error",
         "no-throw-literal": "error",
+<<<<<<< HEAD
         "no-trailing-spaces": "error",
+=======
+>>>>>>> e32146e4b79c0c9cda65f757effc7464ca5dad7d
         "no-undef-init": "error",
         "no-undefined": "error",
         "no-underscore-dangle": "error",
@@ -188,7 +250,11 @@ module.exports = {
         "one-var-declaration-per-line": "error",
         "operator-assignment": "error",
         "operator-linebreak": "error",
+<<<<<<< HEAD
         "padded-blocks": "error",
+=======
+        "padded-blocks": "off",
+>>>>>>> e32146e4b79c0c9cda65f757effc7464ca5dad7d
         "padding-line-between-statements": "error",
         "prefer-arrow-callback": "error",
         "prefer-const": "error",
@@ -199,8 +265,13 @@ module.exports = {
         "prefer-reflect": "error",
         "prefer-rest-params": "error",
         "prefer-spread": "error",
+<<<<<<< HEAD
         "prefer-template": "off",
         "quote-props": "off",
+=======
+        "prefer-template": "error",
+        "quote-props": "error",
+>>>>>>> e32146e4b79c0c9cda65f757effc7464ca5dad7d
         "quotes": [
             "error",
             "single"
@@ -211,17 +282,28 @@ module.exports = {
         "require-jsdoc": "error",
         "require-unicode-regexp": "error",
         "rest-spread-spacing": "error",
+<<<<<<< HEAD
         "semi": "error",
+=======
+        "semi": "off",
+>>>>>>> e32146e4b79c0c9cda65f757effc7464ca5dad7d
         "semi-spacing": "error",
         "semi-style": [
             "error",
             "last"
         ],
         "sort-imports": "error",
+<<<<<<< HEAD
         "sort-keys": "off",
         "sort-vars": "error",
         "space-before-blocks": "error",
         "space-before-function-paren": "error",
+=======
+        "sort-keys": "error",
+        "sort-vars": "error",
+        "space-before-blocks": "error",
+        "space-before-function-paren": "off",
+>>>>>>> e32146e4b79c0c9cda65f757effc7464ca5dad7d
         "space-in-parens": [
             "error",
             "never"
