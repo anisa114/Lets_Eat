@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
-    
   </head>
 
   <body>
@@ -21,6 +20,28 @@
         </ul>
       </nav>
     </header>
+    <section class="menu">
+      <div id="list-example" class="list-group">
+        <%for (category in menu) {%>
+          <a class="list-group-item list-group-item-action" href="#<%=category%>"><%=category%></a>
+        <% } %>
+      </div>
+      <div data-spy="scroll" data-target="#list-example" data-offset="0" class="scrollspy-example">
+        <%for (category in menu) {%>
+          <h1><%=category%></h1>
+            <% for (item of menu[category]) { %>
+              <div class="menu__item">
+                <h3 class="menu__item-name"><%=item.name%></h3>
+                <p class="menu__item-price"><%=item.price%></p>
+                <p class="menu__item-description"><%=item.description%></p>
+                <img src="<%item.image_url%>" alt="<%=item.name%>">
+                <label for="<%=item.name%>">Quantity</label><input type="text" class="quantity" id="<%=item.name%>">
+                <button onclick="addToCart(this)" class="btn btn-success">Add to cart</button>
+              </div>
+            <% } %>  
+        <% } %>
+      </div>
+    </section>
     <script type="text/javascript" src="/scripts/app.js"></script>
   </body>
 </html>
