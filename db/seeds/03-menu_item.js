@@ -12,6 +12,14 @@ exports.seed = function(knex, Promise) {
         description: "Marinara sauce, pizza mozzarella, cheddar, spicy chicken breast, roasted garlic, fresh spinach, sun-dried tomatoes and feta",
         image_url: "image"
         }),
+        // Inserts seed entries
+        knex('menu_item').insert({
+          name: 'Baked Ravioli',
+          price: '17.29',
+          category_id: 2 ,
+          description: "Delicious Pasta",
+          image_url: "image"
+          }),
       ]);
   });
 };
