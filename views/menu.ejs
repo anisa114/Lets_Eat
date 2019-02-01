@@ -32,6 +32,7 @@
             <h1><%=category%></h1>
               <% for (item of menu[category]) { %>
                 <div class="menu__item">
+                  <span hidden class="menu__item-id"><%=item.id%></span>
                   <h3 class="menu__item-name"><%=item.name%></h3>
                   <p class="menu__item-price"><%=item.price%></p>
                   <p class="menu__item-description"><%=item.description%></p>
