@@ -12,13 +12,15 @@
 var cart = [];
 const addToCart = (element) => {
   let btnEl = $(element)
+  let id = btnEl.siblings(".menu__item-id").text();
   let quantity = btnEl.siblings('.quantity').val();
   let name = btnEl.siblings('.menu__item-name').text();
   let description = btnEl.siblings('.menu__item-description').text();
   let price = btnEl.siblings('.menu__item-price').text();
-  console.log(quantity, name, description, price)
+  console.log(quantity, name, description, price, id)
 
   let item = {
+    id: id,
     name: name,
     description: description,
     price:price,
@@ -31,7 +33,7 @@ const addToCart = (element) => {
 //Adding click event listener to cart button
 $( "#cart" ).click(function() {
   //Persist the cart array to to Local storage
-  localStorage.setItem('items', JSON.stringify(cart));
+   localStorage.setItem('items', JSON.stringify(cart));
 
 });
 //Remove item from cart 
@@ -72,10 +74,12 @@ function updateItem(name, newQuantity){
 // });
 
 function handleClick(submit){
+  var data = JSON.parse(localStorage.getItem('items'));
+  console.log(data);
   console.log("Button clicked ajax");
   $.ajax({
     type: "POST",
     url: "/restaurants/cart",
-  
+    data: { items: data }, 
   });
 }

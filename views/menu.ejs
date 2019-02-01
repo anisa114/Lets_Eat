@@ -16,22 +16,23 @@
         <ul class="nav__items">
           <li class="nav__item"><a href="/restaurants">Home</a></li>
           <li class="nav__item"><a href="/contact">Contact Us</a></li>
-          <li class="nav__item" id="cart"><a href="/cart">Cart</a></li>
+          <li class="nav__item" id="cart"><a href="/restaurants/cart">Cart</a></li>
         </ul>
       </nav>
     </header>
     <section class="menu">
       <div id="list-example" class="list-group">
-        <%for (category in menu) {%>
-          <a class="list-group-item list-group-item-action" href="#<%=category.split(' ').join('').toLowerCase()%>"><%=category%></a>
+        <%for (categories in menu) {%>
+          <a class="list-group-item list-group-item-action" href="#<%=categories.split(' ').join('').toLowerCase()%>"><%=categories%></a>
         <% } %>
       </div>
       <div data-spy="scroll" data-target="#list-example" data-offset="0" class="scrollspy-example">
-        <%for (category in menu) {%>
-          <div id="<%=category.split(' ').join('').toLowerCase()%>">
-            <h1><%=category%></h1>
-              <% for (item of menu[category]) { %>
+        <%for (categories in menu) {%>
+          <div id="<%=categories.split(' ').join('').toLowerCase()%>">
+            <h1><%=categories%></h1>
+              <% for (item of menu[categories]) { %>
                 <div class="menu__item">
+                  <span hidden class="menu__item-id"><%=item.id%></span>
                   <h3 class="menu__item-name"><%=item.name%></h3>
                   <p class="menu__item-price"><%=item.price%></p>
                   <p class="menu__item-description"><%=item.description%></p>

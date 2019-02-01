@@ -6,7 +6,7 @@ const client = require('twilio')(accountSid, authToken);
 
 client.messages.create({
 to: process.env.MY_PHONE_NUMBER,
-from:'12898125908',
+from:'12898125908',//Twillio Phone number
 body: 'Testing'
 })
 .then((message) => console.log(message.sid));

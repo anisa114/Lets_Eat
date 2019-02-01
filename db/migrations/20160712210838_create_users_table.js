@@ -8,38 +8,38 @@ exports.up = function(knex, Promise) {
     table.string('password');
     table.string('role');
   })
-  .createTable('order', table => {
+  .createTable('orders', table => {
     table.increments('id').primary();
     table.bigInteger('ref_no');
     table.integer('ready_time');
+    table.float('price');
     table.integer('user_id').references('id').inTable('users');
   })
-  .createTable('category', table => {
+  .createTable('categories', table => {
     table.increments('id').primary();
     table.string('name');
   })
-  .createTable('menu_item', table => {
+  .createTable('menu_items', table => {
     table.increments('id').primary();
     table.string('name');
     table.float('price');
-    table.integer('category_id').references('id').inTable('category');
+    table.integer('categories_id').references('id').inTable('categories');
     table.string('description');
     table.string('image_url');
   })
   .createTable('order_items', table => {
     table.increments('id').primary();
-    table.integer('order_id').references('id').inTable('order');
-    table.integer('menu_item_id').references('id').inTable('menu_item');
+    table.integer('orders_id').references('id').inTable('orders');
+    table.integer('menu_items_id').references('id').inTable('menu_items');
     table.string('name');
-    table.float('price');
+    table.integer("quantity");
   })
 };
-
 exports.down = function(knex, Promise) {
   return knex.schema.dropTable('order_items')
-  .dropTable('order')
-  .dropTable('menu_item')
-  .dropTable('category')
+  .dropTable('orders')
+  .dropTable('menu_items')
+  .dropTable('categories')
   .dropTable('users')
 };
 
