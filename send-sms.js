@@ -1,10 +1,11 @@
-const accountSid = "AC97267a038aa3e5f669573b376e06ac0b"
-const authToken = "f3db0e28efedf7396f4beb37c578bef9"
+require('dotenv').config();
+const accountSid = process.env.TWILIO_ACCOUNT_SID
+const authToken = process.env.TWILIO_AUTH_TOKEN
 
 const client = require('twilio')(accountSid, authToken);
 
 client.messages.create({
-to: '12897000872',
+to: process.env.MY_PHONE_NUMBER,
 from:'12898125908',
 body: 'Testing'
 })
