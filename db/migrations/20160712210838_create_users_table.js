@@ -32,7 +32,7 @@ exports.up = function(knex, Promise) {
     table.integer('orders_id').references('id').inTable('orders');
     table.integer('menu_items_id').references('id').inTable('menu_items');
     table.string('name');
-    table.float('price')
+    table.float('price');
     table.integer("quantity");
   })
 };
