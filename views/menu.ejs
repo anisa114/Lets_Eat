@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Home Page</title>
+
+    <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+  </head>
+
+  <body>
+    <header class="header">
+      <nav class="nav">
+        <p class="nav__logo">Let's<span class="nav__logo--sub">Eat</span></p>
+        <ul class="nav__items">
+          <li class="nav__item"><a href="/restaurants">Home</a></li>
+          <li class="nav__item"><a href="/contact">Contact Us</a></li>
+          <li class="nav__item" id="cart"><a href="/cart">Cart</a></li>
+        </ul>
+      </nav>
+    </header>
+    <section class="menu">
+      <div id="list-example" class="list-group">
+        <%for (category in menu) {%>
+          <a class="list-group-item list-group-item-action" href="#<%=category.split(' ').join('').toLowerCase()%>"><%=category%></a>
+        <% } %>
+      </div>
+      <div data-spy="scroll" data-target="#list-example" data-offset="0" class="scrollspy-example">
+        <%for (category in menu) {%>
+          <div id="<%=category.split(' ').join('').toLowerCase()%>">
+            <h1><%=category%></h1>
+              <% for (item of menu[category]) { %>
+                <div class="menu__item">
+                  <h3 class="menu__item-name"><%=item.name%></h3>
+                  <p class="menu__item-price"><%=item.price%></p>
+                  <p class="menu__item-description"><%=item.description%></p>
+                  <img src="<%item.image_url%>" alt="<%=item.name%>">
+                  <label for="<%=item.name%>">Quantity</label><input type="number" min="1" max="15" class="quantity" id="<%=item.name.split(' ').join('').toLowerCase()%>">
+                  <button onclick="addToCart(this)" class="btn btn-success">Add to cart</button>
+                </div>
+              <% } %> 
+          </div>
+        <% } %>
+      </div>
+    </section>
+    <script type="text/javascript" src="/scripts/app.js"></script>
+    <script type="text/javascript" src="/scripts/smooth.js"></script>
+  </body>
+</html>

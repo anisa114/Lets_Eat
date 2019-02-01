@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
-    
   </head>
 
   <body>
@@ -17,10 +16,16 @@
         <ul class="nav__items">
           <li class="nav__item"><a href="/restaurants">Home</a></li>
           <li class="nav__item"><a href="/contact">Contact Us</a></li>
-          <li class="nav__item"><a href="/cart">Cart</a></li>
+          <li class="nav__item" id="cart"><a href="/cart">Cart</a></li>
         </ul>
       </nav>
     </header>
+
+
+    <button class="btn btn-primary" onclick="handleClick(this)">Submit Order</button>
+
+
+
     <script type="text/javascript" src="/scripts/app.js"></script>
   </body>
 </html>
