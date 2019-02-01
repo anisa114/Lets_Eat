@@ -44,7 +44,7 @@ module.exports = (knex) => {
     let ref_no = makeid();
     let items = req.body.items;
     knex('orders')
-    .insert({ ref_no: ref_no ,ready_time:null, user_id:1})
+    .insert({ ref_no: ref_no ,ready_time:null, user_id:1, price: req.body.totalPrice})
     .returning('id')
     .then(rows => {
       for (let item in items){
@@ -54,7 +54,7 @@ module.exports = (knex) => {
         let price = items[item].price;
         let id = items[item].id;
         knex('order_items')
-        .insert({orders_id :rows[0], menu_items_id: id, name: name})
+        .insert({orders_id :rows[0], menu_items_id: id, name, quantity, price})
         .then(console.log)
         .catch(err => console.log(err.message))
       }

@@ -10,6 +10,7 @@ const addToCart = (element) => {
   let item = { id, name, description, quantity, price };
 
   if (!JSON.parse(localStorage.getItem('items'))) {
+    cart = [];
     cart.push(item);
     localStorage.setItem('items', JSON.stringify(cart));
     return;
@@ -61,7 +62,7 @@ function removeItem(name){
     }
   });
   return items;
-
+}
 //Update quantity of item in cart
 function updateItem(name, newQuantity){
   let items = JSON.parse(localStorage.getItem('items'));
@@ -96,6 +97,9 @@ function handleClick(submit){
   $.ajax({
     type: "POST",
     url: "/restaurants/cart",
-    data: { items: data }, 
+    data: { items: data, 
+        subTotal: subTotal(),
+        salesTax: salesTax(),
+        totalPrice: totalPrice() }, 
   });
 };
