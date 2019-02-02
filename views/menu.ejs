@@ -36,7 +36,7 @@
                   <h3 class="menu__item-name"><%=item.name%></h3>
                   <p class="menu__item-price"><%=item.price%></p>
                   <p class="menu__item-description"><%=item.description%></p>
-                  <img src="<%item.image_url%>" alt="<%=item.name%>">
+                  <img src="<%=item.image_url%>" alt="<%=item.name%>">
                   <label for="<%=item.name%>">Quantity</label><input type="number" min="1" max="15" class="quantity" id="<%=item.name.split(' ').join('').toLowerCase()%>">
                   <button onclick="addToCart(this)" class="btn btn-success">Add to cart</button>
                 </div>

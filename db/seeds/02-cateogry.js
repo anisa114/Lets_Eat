@@ -8,7 +8,7 @@ exports.seed = function(knex, Promise) {
         knex('categories').insert({name: 'Cold Pressed Juices'}),
         knex('categories').insert({name: 'Starters'}),
         knex('categories').insert({name: 'Tacos'}),
-        knex('categories').insert({name: 'Burgers and Wraps'}),
+        knex('categories').insert({name: 'Burgers'}),
         knex('categories').insert({name: 'Salads'}),
         knex('categories').insert({name: 'Desserts'}),
       ]);
