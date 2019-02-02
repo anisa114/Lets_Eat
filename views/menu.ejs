@@ -16,11 +16,12 @@
         <ul class="nav__items">
           <li class="nav__item"><a href="/restaurants">Home</a></li>
           <li class="nav__item"><a href="/contact">Contact Us</a></li>
-          <li class="nav__item" id="cart"><a href="/restaurants/cart">Cart</a></li>
+          <li class="nav__item" id="cart"><a href="/restaurants/cart">Cart<span id="nav__cart-items"></span></a></li>
         </ul>
       </nav>
     </header>
     <section class="menu">
+      <div class="popper">Popper</div>
       <div id="list-example" class="list-group">
         <%for (categories in menu) {%>
           <a class="list-group-item list-group-item-action" href="#<%=categories.split(' ').join('').toLowerCase()%>"><%=categories%></a>
@@ -45,6 +46,7 @@
         <% } %>
       </div>
     </section>
+    <!-- <script src="https://unpkg.com/tippy.js@3/dist/tippy.all.min.js"></script> -->
     <script type="text/javascript" src="/scripts/app.js"></script>
     <script type="text/javascript" src="/scripts/smooth.js"></script>
   </body>
