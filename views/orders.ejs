@@ -5,12 +5,45 @@
      </head>
 
   <body> 
+    <header class="header">
+        <nav class="nav">
+          <p class="nav__logo">Let's<span class="nav__logo--sub">Eat</span></p>
+          <ul class="nav__items">
+            <li class="nav__item"><a href="/restaurants">Home</a></li>
+            <li class="nav__item"><a href="/contact">Contact Us</a></li>
+            <li class="nav__item" id="cart"><a href="/cart">Cart</a></li>
+          </ul>
+        </nav>
+    </header> 
+    
+    
+    <article class="order-container"> 
+        <H3> Order #<%=ref_no%> </H3>
+        <% for (var order in order_items) { %>
+            <H4><%=order_items[order].name%></H4>
+            <H4>Price <%=order_items[order].price%></H4>
+            <H4>Quantity <%=order_items[order].quantity%></H4>
+      
+      <% } %>
         
-    <form method="POST" action="/restaurants/orders/:<% ref_no %>">
-        <label for="ready_time">Ready Time</label>
+    </article>
+        
+    
+
+
+    <form method="POST" action="/restaurants/orders/:<%=ref_no %>">
+        <label for="ready_time">Please enter ready time:</label>
         <input type="text" name="ready_time" id="ready_time">
         <button type="submit">submit</button>
     </form>
+    
+
+
+    <span class="pricing">
+        <p>Sub Total: <%=subTotal%> </p>
+        <p>Sales Tax: <%=salesTax%></p>
+        <p>Order Total: <%=totalPrice%></p>
+    </span>
    
   </body>
   </html>
