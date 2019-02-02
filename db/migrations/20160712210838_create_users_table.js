@@ -11,7 +11,7 @@ exports.up = function(knex, Promise) {
   .createTable('orders', table => {
     table.increments('id').primary();
     table.bigInteger('ref_no');
-    table.integer('ready_time');
+    table.string('ready_time');
     table.float('subTotal');
     table.float('salesTax');
     table.float('totalPrice');
