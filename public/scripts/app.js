@@ -1,5 +1,5 @@
 //Creating a temp array that stores cart items
-var cart = [];
+var cart = !localStorage.getItem('items') ? [] : JSON.parse(localStorage.getItem('items'));
 const addToCart = (element) => {
   const btnEl = $(element)
   const id = btnEl.siblings('.menu__item-id').text();
@@ -10,7 +10,7 @@ const addToCart = (element) => {
   let item = { id, name, description, quantity, price };
 
   if (!JSON.parse(localStorage.getItem('items'))) {
-    cart = [];
+    let cart = []
     cart.push(item);
     localStorage.setItem('items', JSON.stringify(cart));
     return;
@@ -54,52 +54,5 @@ $( "#cart" ).click(function() {
   localStorage.setItem('items', JSON.stringify(cart));
 });
 //Remove item from cart 
-function removeItem(name){
-  let items = JSON.parse(localStorage.getItem('items'));
-  items.forEach(item => {
-    if(item.name === name){
-      items.splice(item,1);
-    }
-  });
-  return items;
-}
-//Update quantity of item in cart
-function updateItem(name, newQuantity){
-  let items = JSON.parse(localStorage.getItem('items'));
-  items.forEach(item => {
-    if(item.name === name){
-      item.quantity = newQuantity;
-    }
-  });
-  return items;
-}
 
-// //Event Listener for Remove Button
-// $("#remove").click(function(){
-//   let name = //get name
-//   let modifiedItems = removeItem(name);
-//   localStorage.setItem('items', JSON.stringify(modifiedItems));
 
-// });
-//Event Listener for Update Button
-
-// $("#update").click(function(){
-//   let name = //get name
-//   let newQuantity = //get quantity 
-//   let modifiedItems = updateItem(name);
-//   localStorage.setItem('items', JSON.stringify(modifiedItems));
-// });
-
-function handleClick(submit){
-  var data = JSON.parse(localStorage.getItem('items'));
-  console.log(data);
-  console.log("Button clicked ajax");
-  $.ajax({
-    type: "POST",
-    url: "/restaurants/cart",
-    data: { items: data, 
-        subTotal: subTotal(),
-        salesTax: salesTax(),
-        totalPrice: totalPrice() }, 
-  });
-};
