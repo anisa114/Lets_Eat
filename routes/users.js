@@ -3,6 +3,7 @@
 const express = require('express');
 const router  = express.Router();
 require('dotenv').config();
+const moment = require('moment');
 
  //Twillio message 
 
@@ -84,12 +85,44 @@ module.exports = (knex) => {
       })
       .then((message) => console.log(message.sid));
       
-      
       function ownerMessage(ref_no){
         return `New order: http://localhost:8080/orders/${ref_no}`
       }
   });
 
+  
+  router.get("/orders/:ref_no", (req, res) => {
+    let ref_no = req.params.ref_no;
+    knex.from('orders')
+    .select('id')
+    .where('ref_no', ref_no)
+    .then(rows => {
+      var orders_id = rows[0].id;
+      knex.from('order_items')
+      .select('*')
+      .where('orders_id', orders_id)
+      .then(order_items => {
+        res.render("orders.ejs", {order_items: order_items, ref_no: ref_no});
+      })
+    });
+
+  });
+
+  router.post("/orders/:ref_no", (req, res) => {
+    var ready_time = req.body.ready_time  
+    var localTime = moment().format( 'h:mm a');
     
+    client.messages.create({
+      to: '6477748487',
+      from:'12898125908',//Twillio Phone number
+      body: readytimeMessage()
+      })
+      .then((message) => console.log(message.sid));
+    
+      function readytimeMessage(){
+        return `Hey Shah, your order will be ready in ${ready_time}`
+      }
+  
+  });
   return router;
 }
