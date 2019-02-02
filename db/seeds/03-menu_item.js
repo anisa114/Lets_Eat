@@ -6,116 +6,172 @@ exports.seed = function(knex, Promise) {
       return Promise.all([
         // Inserts seed entries
         knex('menu_items').insert({
-          name: 'Baked Ravioli',
-          price: '17.29',
+          name: 'Buffalo Cauliflower',
+          price: '12.99',
           categories_id: 2 ,
-          description: "Delicious Pasta",
+          description: "Spicy buffalo sauce, ranch, hemp, and celery.",
           image_url: "image"
         }),
         knex('menu_items').insert({
-          name: 'Chipotle Bacon Penne',
-          price: '17.29',
+          name: 'Dragon Brocolli',
+          price: '8.49',
           categories_id: 2 ,
-          description: "Bacon, mushrooms, green onions, tomatoes, cheddar, chipotle seasoning and Alfredo sauce, baked with cheddar and pizza mozzarella.",
+          description: "Broccoli, miso gravy, banana chilies, scallions, sesame seeds, and chili oil.",
           image_url: "image"
         }),
         knex('menu_items').insert({
-          name: 'Jambalaya Fettuccini',
-          price: '18.99',
+          name: 'French Fries',
+          price: '6.99',
           categories_id: 2 ,
-          description: "Chicken breast, shrimp, spicy Italian sausage, tomatoes, green peppers, green onions, Cajun seasoning and marinara sauce.",
+          description: "Hand cut, tossed with sea salt.",
           image_url: "image"
           }),
         knex('menu_items').insert({
-          name: 'Smokey Mountain Spaghetti and Meatballs',
-          price: '19.29',
+          name: 'Dragon Fries',
+          price: '9.49',
           categories_id: 2 ,
-          description: "A generous serving of spaghetti, beefy Bolognese sauce, meatballs and cheddar.",
+          description: "Miso gravy, banana chilies, scallions, sesame seeds, and chili oil.",
           image_url: "image"
         }),
       
         knex('menu_items').insert({
-          name: 'Tuscan Pizza',
-          price: '13.59',
+          name: 'The Healer',
+          price: '11.99',
           categories_id: 1 ,
-          description: "Marinara sauce, pizza mozzarella, cheddar, spicy chicken breast, roasted garlic, fresh spinach, sun-dried tomatoes and feta",
+          description: "Turmeric root, ginger, orange, pineapple, celery and lemon",
           image_url: "image"
         }),
       knex('menu_items').insert({
-          name: 'Spicy Perogy',
-          price: '13.79',
+          name: 'Raw Ginger Shot',
+          price: '3.99',
           categories_id: 1 ,
-          description: "Sour cream, bacon, Cactus Cut Potatoes, pizza mozzarella, cheddar, green onions and a dollop of sour cream.",
+          description: "Ginger",
           image_url: "image"
           }),
       knex('menu_items').insert({
-          name: 'Boston Royal',
-          price: '13.79',
+          name: 'Apple Ginger Glow',
+          price: '11.99',
           categories_id: 1 ,
-          description: "Signature pizza sauce, pizza mozzarella, smoked ham, pepperoni, shrimp, olives, green peppers, onions and fresh mushrooms.",
+          description: "Apple, extra ginger and lemon.",
           image_url: "image"
           }),
       knex('menu_items').insert({
-          name: 'The Meateor',
-          price: '13.79',
+          name: 'Immunity Power Shot',
+          price: '6.49',
           categories_id: 1 ,
-          description: "Beefy Bolognese sauce, pizza mozzarella, smoked ham, pepperoni, seasoned ground beef and spicy Italian sausage.",
+          description: "Ginger, lemon, grapefruit, garlic, Himalayan pink salt, echinacea, oregano oil.",
           image_url: "image"
           }),
       knex('menu_items').insert({
-          name: 'Mediterranean Chicken Wrap',
+          name: 'Crispy Cauliflower Tacos',
+          price: '12.99',
+          categories_id: 3 ,
+          description: "Jicama, avocado, garlic mayonnaise, napa cabbage, beet sauerkraut, and lemon.",
+          image_url: "image"
+          }),
+      knex('menu_items').insert({
+          name: 'Falafel Tacos',
+          price: '12.99',
+          categories_id: 3 ,
+          description: "Green falafel, red cabbage, tahini, zhug, amba, crispy onions, and tomato.",
+          image_url: "image"
+          }),
+      knex('menu_items').insert({
+          name: 'Grilled Tofu Tacos',
+          price: '10.99',
+          categories_id: 3 ,
+          description: "Tofu steaks, power greens, jalapeno/lime sauce, tomato, onion, and cilantro.",
+          image_url: "image"
+          }),
+      knex('menu_items').insert({
+          name: 'Squash Tacos',
+          price: '12.99',
+          categories_id: 3 ,
+          description: "Crispy panko squash, power greens, jalapeno/lime sauce, tomato, onion, and cilantro.",
+          image_url: "image"
+          }),
+      knex('menu_items').insert({
+          name: 'Banquet Burger',
           price: '14.99',
-          categories_id: 3 ,
-          description: "Grilled chicken, Kalamata olives, feta, tomatoes, red peppers, cucumbers, lettuce, red onions, tomato tarragon dressing and hummus.",
-          image_url: "image"
-          }),
-      knex('menu_items').insert({
-          name: 'The Big Dipper',
-          price: '16.79',
-          categories_id: 3 ,
-          description: "Sliced steak, braised onions, roasted red peppers, pizza mozzarella and crispy onion straws. Served with horseradish mayo and au jus.",
-          image_url: "image"
-          }),
-      knex('menu_items').insert({
-          name: 'Boston Brute',
-          price: '13.69',
-          categories_id: 3 ,
-          description: "Genoa salami, pepperoni, smoked ham, pizza mozzarella, onions and our signature pizza sauce.",
-          image_url: "image"
-          }),
-      knex('menu_items').insert({
-          name: 'Chipotle Chicken Club',
-          price: '15.49',
-          categories_id: 3 ,
-          description: "Grilled chicken breast, bacon, cheddar, pizza mozzarella, tomatoes, lettuce and chipotle Caesar sauce served on pizza bread.",
-          image_url: "image"
-          }),
-      knex('menu_items').insert({
-          name: 'Ribber-Winger Combo',
-          price: '24.99',
           categories_id: 4 ,
-          description: "A half rack of ribs paired with six of our famous wings. Choose any type of wing and flavour.",
+          description: "Tempeh bacon, fresh 'cheese' sauce, garlic mayo, pickles, alfalfa, lettuce, tomato, and red onion.",
           image_url: "image"
           }),
       knex('menu_items').insert({
-          name: 'NY Striploin Steak',
-          price: '17.29',
+          name: 'BBQ Burger',
+          price: '14.99',
           categories_id: 4 ,
-          description: "Canadian 8-ounce AAA New York strip loin steak, aged a minimum of 28 days and charbroiled the way you like it.",
+          description: "BBQ sauce, quinoa onion rings, garlic mayonnaise, napa cabbage, banana chilies, tomato, and lettuce.",
           image_url: "image"
           }),
       knex('menu_items').insert({
-          name: 'Chicken Parmesan',
-          price: '19.69',
+          name: 'Chipotle Mushroom Bacon Burger',
+          price: '14.99',
           categories_id: 4 ,
-          description: "A fried buttermilk-breaded chicken breast, topped with our marinara sauce and pizza mozzarella.",
+          description: "Chipotle mayonnaise, tempeh bacon, mushrooms, tomato, lettuce, and alfalfa.",
           image_url: "image"
           }),
       knex('menu_items').insert({
-          name: 'Slow-Roasted Pork Back Ribs',
+          name: 'All Star',
+          price: '16.99',
+          categories_id: 5 ,
+          description: "Quinoa, power greens, marinated adzuki, goji, heirloom grape tomatoes, cucumber, mixed nuts, parsley, cilantro, sunflower sprouts, sweet potato, tofu steaks, and choice of dressing.",
+          image_url: "image"
+          }),
+      knex('menu_items').insert({
+          name: 'Flying Cashew Burger',
+          price: '14.99',
+          categories_id: 4 ,
+          description: "Avocado, quick pickled yellow beets, garlic mayonnaise, red cabbage, carrot, and cashew cheese.",
+          image_url: "image"
+          }),
+      knex('menu_items').insert({
+          name: 'Big Salad',
+          price: '10.99',
+          categories_id: 5 ,
+          description: "Avocado, red pepper, tomato, carrot, cucumber, hemp, lettuce, and choice of dressing.",
+          image_url: "image"
+          }),
+      knex('menu_items').insert({
+          name: 'Detox Caesar',
+          price: '13.99',
+          categories_id: 5 ,
+          description: "Power greens, brazil nut parmesan, tempeh bacon, sun-dried tomatoes, flowers, lemon, and Caesar dressing.",
+          image_url: "image"
+          }),
+      knex('menu_items').insert({
+          name: 'Monster Protein Salad',
           price: '17.99',
-          categories_id: 4 ,
-          description: "Slow-roasted pork back ribs tossed in your choice of sauce.",
+          categories_id: 5 ,
+          description: "Tempeh, tofu cubes, avocado,_chick peas, cranberries, marinated adzuki, red cabbage, cucumber, heirloom grape tomatoes, watermelon seeds, lettuce, and choice of dressing.",
+          image_url: "image"
+          }),     
+      knex('menu_items').insert({
+          name: 'Birthday Cake Donut',
+          price: '4.75',
+          categories_id: 6 ,
+          description: "Awesome birthday cake donut!",
+          image_url: "image"
+          }),
+      knex('menu_items').insert({
+          name: 'Carrot Cake',
+          price: '7.99',
+          categories_id: 6 ,
+          description: "Baked inhouse, made with real carrots.",
+          image_url: "image"
+          }),
+      knex('menu_items').insert({
+          name: 'Chocolate Chip Cookie',
+          price: '2.99',
+          categories_id: 6 ,
+          description: "Chocolatey, decadent and moist chocolate chip cookie",
+          image_url: "image"
+          }),
+      knex('menu_items').insert({
+          name: 'Smores Cookie',
+          price: '2.99',
+          categories_id: 6 ,
+          description: "Chocolate chip cookie with added soft marshmellows for the perfect combination.",
           image_url: "image"
           }),
       ]);
