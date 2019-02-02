@@ -37,6 +37,12 @@ function handleClick(submit){
         subTotal: subTotal(),
         salesTax: salesTax(),
         totalPrice: totalPrice() }, 
+        success: function(data){ 
+          if (data.status === "Success") {
+            window.location = data.redirect;
+        }
+          
+        }
   });
 };
 
