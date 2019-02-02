@@ -12,7 +12,9 @@ exports.up = function(knex, Promise) {
     table.increments('id').primary();
     table.bigInteger('ref_no');
     table.integer('ready_time');
-    table.float('price');
+    table.float('subTotal');
+    table.float('salesTax');
+    table.float('totalPrice');
     table.integer('user_id').references('id').inTable('users');
   })
   .createTable('categories', table => {
@@ -32,6 +34,7 @@ exports.up = function(knex, Promise) {
     table.integer('orders_id').references('id').inTable('orders');
     table.integer('menu_items_id').references('id').inTable('menu_items');
     table.string('name');
+    table.string('description');
     table.float('price');
     table.integer("quantity");
   })

@@ -54,7 +54,13 @@ module.exports = (knex) => {
     let ref_no = makeid();
     let items = req.body.items;
     knex('orders')
-    .insert({ ref_no: ref_no ,ready_time:null, user_id:1, price: req.body.totalPrice})
+    .insert({ ref_no: ref_no ,
+      ready_time: null, 
+      user_id:  1, 
+      totalPrice: req.body.totalPrice, 
+      subTotal: req.body.subTotal,
+      salesTax: req.body.salesTax
+    })
     .returning('id')
     .then(rows => {
       for (let item in items){
@@ -64,7 +70,7 @@ module.exports = (knex) => {
         let price = items[item].price;
         let id = items[item].id;
         knex('order_items')
-        .insert({orders_id :rows[0], menu_items_id: id, name, quantity, price})
+        .insert({orders_id :rows[0], menu_items_id: id, name, quantity, price, description})
         .then()
         .catch(err => console.log(err.message))
       }
@@ -88,36 +94,51 @@ module.exports = (knex) => {
       function ownerMessage(ref_no){
         return `New order: http://localhost:8080/orders/${ref_no}`
       }
+
+
   });
 
-  
+  //Owner route showing order items and ref_no
   router.get("/orders/:ref_no", (req, res) => {
     let ref_no = req.params.ref_no;
     knex.from('orders')
-    .select('id')
+    .select('id','salesTax','subTotal', 'totalPrice')
     .where('ref_no', ref_no)
     .then(rows => {
       var orders_id = rows[0].id;
+      var salesTax = rows[0].salesTax;
+      var totalPrice = rows[0].totalPrice;
+      var subTotal = rows[0].subTotal;
       knex.from('order_items')
       .select('*')
       .where('orders_id', orders_id)
       .then(order_items => {
-        res.render("orders.ejs", {order_items: order_items, ref_no: ref_no});
+        console.log(order_items);
+        console.log(ref_no);
+        res.render("orders.ejs", {
+          order_items: order_items,
+           ref_no: ref_no, 
+           salesTax: salesTax, 
+           totalPrice:  totalPrice, 
+           subTotal:  subTotal 
+          });
       })
     });
 
   });
 
+  //Sending ready_time to customer
   router.post("/orders/:ref_no", (req, res) => {
     var ready_time = req.body.ready_time  
-    var localTime = moment().format( 'h:mm a');
+    var date = new Date();
+    console.log(localTime);
     
-    client.messages.create({
-      to: '6477748487',
-      from:'12898125908',//Twillio Phone number
-      body: readytimeMessage()
-      })
-      .then((message) => console.log(message.sid));
+    // client.messages.create({
+    //   to: '6477748487',
+    //   from:'12898125908',//Twillio Phone number
+    //   body: readytimeMessage()
+    //   })
+    //   .then((message) => console.log(message.sid));
     
       function readytimeMessage(){
         return `Hey Shah, your order will be ready in ${ready_time}`
