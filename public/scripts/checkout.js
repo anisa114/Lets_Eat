@@ -32,7 +32,6 @@ const generateOrders = (cart) =>{
 function submitOrder(submit){
   var data = JSON.parse(localStorage.getItem('items'));
   console.log(data);
-  localStorage.clear();
   cartCount();
   console.log("Button clicked ajax");
   $.ajax({
@@ -45,6 +44,7 @@ function submitOrder(submit){
         success: function(data){ 
           if (data.status === "Success") {
             window.location = data.redirect;
+            localStorage.clear();
          }
       }
   });

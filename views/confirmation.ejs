@@ -1,15 +1,15 @@
-<!DOCTYPE html>
- <html> 
-     <head> 
-     </head>
+<% include partials/_head%>
+  <body>
+    <% include partials/_header%>
 
-  <body> 
-        <h1>Thank you for you order</h1>
-        <h3>Your order reference number is #<%= ref_no%> </h3>
-        <h4>We will update you with a pickup time shortly via SMS</h4>
-
+    <section class="nav-clear">
+            <h1>Thank you for you order</h1>
+            <h3>Your order reference number is #<span id="ref_no"><%= ref_no%> </span></h3>
+            <h4>We will update you with a pickup time shortly via SMS</h4>
+            <h4 id = "demo"></h4>
+            
+    </section>
     <script type="text/javascript" src="/scripts/confirmation.js"></script>
   </body>
-
-  </html>
+</html>
 
