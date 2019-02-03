@@ -13,7 +13,6 @@ router.use(cookieSession({
   maxAge: 24 * 60 * 60 * 1000 // 24 hours
 }));
 
-
  //Twillio message 
 
 const accountSid = process.env.TWILIO_ACCOUNT_SID
@@ -38,8 +37,8 @@ module.exports = (knex) => {
 
   // Home page
   router.get("/", (req, res) => {
-    res.send("User Home Page")
-  });
+    res.render("index");
+    });
 
   //Owner all orders page
   router.get("/orders/all", (req, res) => {
@@ -51,17 +50,17 @@ module.exports = (knex) => {
   });
 
   //User Login
-router.get("/users", (req, res) => {
-  //Set cookie session to role "user"
-  req.session.user_id = "user";  
-  res.redirect("/restaurants/");
-});
-//Owner Login
-router.get("/owner", (req, res) => {
-  //Set cookie session to role "user"
-  req.session.user_id = "owner";
-  res.redirect("/restaurants/orders/all");
-});
+  router.get("/users", (req, res) => {
+    //Set cookie session to role "user"
+    req.session.user_id = "user";  
+    res.redirect("/restaurants/");
+  });
+  //Owner Login
+  router.get("/owner", (req, res) => {
+    //Set cookie session to role "user"
+    req.session.user_id = "owner";
+    res.redirect("/restaurants/orders/all");
+  });
   //Info Page
   router.get("/info", (req, res) => {
     res.render("info");
@@ -97,46 +96,46 @@ router.get("/owner", (req, res) => {
     res.render("confirmation",{ref_no: ref_no});
 
   });
-//GET to /cart
-  router.get("/cart", (req, res) => {
-      res.render("cart");
-  });
+  //GET to /cart
+    router.get("/cart", (req, res) => {
+        res.render("cart");
+    });
 
-//POST request to /cart
-  router.post("/cart", (req, res) => {
-    let ref_no = makeid();
-    let items = req.body.items;
-    knex('orders')
-    .insert({ ref_no: ref_no ,
-      ready_time: null, 
-      user_id:  1, 
-      totalPrice: req.body.totalPrice, 
-      subTotal: req.body.subTotal,
-      salesTax: req.body.salesTax
-    })
-    .returning('id')
-    .then(rows => {
-      for (let item in items){
-        let name = items[item].name;
-        let quantity = items[item].quantity;
-        let description = items[item].description;
-        let price = items[item].price;
-        let id = items[item].id;
-        knex('order_items')
-        .insert({orders_id :rows[0], menu_items_id: id, name, quantity, price, description})
-        .then()
-        .catch(err => console.log(err.message))
-      }
-    })
-    .catch(err => console.log(err.message));
-    client.messages.create({
-      to: '2897000872',
-      from:'12898125908',//Twillio Phone number
-      body: ownerMessage(ref_no)
+  //POST request to /cart
+    router.post("/cart", (req, res) => {
+      let ref_no = makeid();
+      let items = req.body.items;
+      knex('orders')
+      .insert({ ref_no: ref_no ,
+        ready_time: null, 
+        user_id: 1, 
+        totalPrice: req.body.totalPrice, 
+        subTotal: req.body.subTotal,
+        salesTax: req.body.salesTax
       })
-      .then((message) => console.log(message.sid));
-      res.json({status: "Success", redirect: `/restaurants/confirmation/${ref_no}`});
-  });
+      .returning('id')
+      .then(rows => {
+        for (let item in items){
+          let name = items[item].name;
+          let quantity = items[item].quantity;
+          let description = items[item].description;
+          let price = items[item].price;
+          let id = items[item].id;
+          knex('order_items')
+          .insert({orders_id :rows[0], menu_items_id: id, name, quantity, price, description})
+          .then()
+          .catch(err => console.log(err.message))
+        }
+      })
+      .catch(err => console.log(err.message));
+      client.messages.create({
+        to: '2897000872',
+        from:'12898125908',//Twillio Phone number
+        body: ownerMessage(ref_no)
+        })
+        .then((message) => console.log(message.sid));
+        res.json({status: "Success", redirect: `/restaurants/confirmation/${ref_no}`});
+    });
 
    
   //Owner route showing order items and ref_no
@@ -182,19 +181,34 @@ router.get("/owner", (req, res) => {
     .catch(err => console.log(err.message))
     
     
-    // client.messages.create({
-    //   to: '6477748487',
-    //   from:'12898125908',//Twillio Phone number
-    //   body: readytimeMessage()
-    //   })
-    //   .then((message) => console.log(message.sid));
+    client.messages.create({
+      to: '6477748487',
+      from:'12898125908',//Twillio Phone number
+      body: readytimeMessage()
+      })
+      .then((message) => console.log(message.sid));
     
       function readytimeMessage(){
         return `Hey Shah, your order will be ready in ${ready_time}`
       }
   });
 
+  //Route to display ready_time (Timer)
+  router.get("/ready/:ref_no", (req, res) => {
+    console.log("AJAX GET REQUEST SERVER SIDE");
+    let ref_no = req.params.ref_no;
+    knex
+  .from('orders')
+  .select('ready_time')
+  .where({ref_no: ref_no})
+  .then(rows => {
+    let ready_time = rows[0].ready_time;
+    console.log(ready_time);
+    res.json({ready_time: ready_time});
+  })
+  .catch(err => console.log(err.message))
 
+  });
 
 
   return router;
