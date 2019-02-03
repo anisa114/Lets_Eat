@@ -13,6 +13,20 @@ const client = require('twilio')(accountSid, authToken);
 
 
 module.exports = (knex) => {
+//Function that creates a random refernce number
+  //https://stackoverflow.com/questions/1349404/generate-random-string-characters-in-javascript
+  function makeid() {
+    var num = "";
+    var possible = "0123456789";
+      for (var i = 0; i < 10; i++)
+      num += possible.charAt(Math.floor(Math.random() * possible.length));
+      return parseInt(num);
+  }
+
+  function ownerMessage(ref_no){
+    return `New order: http://localhost:8080/orders/${ref_no}`
+  }
+ 
   //Order Now - GET /restaurants/menu >> res.render - menu.ejs 
   router.get("/menu", (req, res) => {
     let menu = {};
@@ -36,29 +50,30 @@ module.exports = (knex) => {
     .catch(err => console.log(err.message))
   });
 
+  //Client confirmation Page
+  router.get("/confirmation", (req, res ) => {
 
-    //Client confirmation Page
-    router.get("/confirmation", (req, res ) => {
-      console.log("Triggered");
-      res.render("confirmation");
-    });
-
+    //Get the last ref_no
+    knex('orders').
+    max('id')
+    .then(rows => {
+      let max_id = rows[0].max;
+      knex('orders')
+      .select('ref_no')
+      .where('id', max_id)
+      .then(rows =>{
+        let ref_no = rows[0].ref_no;
+        res.render("confirmation",{ref_no: ref_no});
+      })
+    })
+  });
+//GET to /cart
   router.get("/cart", (req, res) => {
       res.render("cart");
   });
 
-
+//POST request to /cart
   router.post("/cart", (req, res) => {
-    
-  //Function that creates a random refernce number
-  //https://stackoverflow.com/questions/1349404/generate-random-string-characters-in-javascript
-    function makeid() {
-      var num = "";
-      var possible = "0123456789";
-        for (var i = 0; i < 10; i++)
-        num += possible.charAt(Math.floor(Math.random() * possible.length));
-        return parseInt(num);
-    }
     let ref_no = makeid();
     let items = req.body.items;
     knex('orders')
@@ -77,6 +92,8 @@ module.exports = (knex) => {
         let description = items[item].description;
         let price = items[item].price;
         let id = items[item].id;
+        console.log(rows);
+        console.log(rows[0].ref_no);
         knex('order_items')
         .insert({orders_id :rows[0], menu_items_id: id, name, quantity, price, description})
         .then()
@@ -84,25 +101,12 @@ module.exports = (knex) => {
       }
     })
     .catch(err => console.log(err.message));
-
-  //Find ref_no from of user from database
-    knex.from('orders')
-    .select(ref_no)
-    .then(rows => {
-      var ref_no = rows[0];
-      console.log(ref_no);
-    })
-    // client.messages.create({
-    //   to: '2897000872',
-    //   from:'12898125908',//Twillio Phone number
-    //   body: ownerMessage(ref_no)
-    //   })
-    //   .then((message) => console.log(message.sid));
-      
-      function ownerMessage(ref_no){
-        return `New order: http://localhost:8080/orders/${ref_no}`
-      }
-     
+    client.messages.create({
+      to: '2897000872',
+      from:'12898125908',//Twillio Phone number
+      body: ownerMessage(ref_no)
+      })
+      .then((message) => console.log(message.sid));
       res.json({status: "Success", redirect: '/restaurants/confirmation'});
   });
 
@@ -129,7 +133,7 @@ module.exports = (knex) => {
           totalPrice:  totalPrice, 
           subTotal:  subTotal 
         });
-      })
+      });
     });
   });
 
