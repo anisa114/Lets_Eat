@@ -4,6 +4,15 @@ const express = require('express');
 const router  = express.Router();
 require('dotenv').config();
 const moment = require('moment');
+const cookieSession = require('cookie-session');
+//Use cookie session
+router.use(cookieSession({
+  name: 'session',
+  keys: ["3482537514","7562377541"],
+  // Cookie Options
+  maxAge: 24 * 60 * 60 * 1000 // 24 hours
+}));
+
 
  //Twillio message 
 
@@ -26,7 +35,35 @@ module.exports = (knex) => {
   function ownerMessage(ref_no){
     return `New order: http://localhost:8080/orders/${ref_no}`
   }
- 
+
+  // Home page
+  router.get("/", (req, res) => {
+    res.send("User Home Page")
+  });
+
+  //Owner all orders page
+  router.get("/orders/all", (req, res) => {
+    res.send("All the orders")
+  });
+
+  //User Login
+router.get("/users", (req, res) => {
+  //Set cookie session to role "user"
+  req.session.user_id = "user";  
+  res.redirect("/restaurants/");
+});
+//Owner Login
+router.get("/owner", (req, res) => {
+  //Set cookie session to role "user"
+  req.session.user_id = "owner";
+  res.redirect("/restaurants/orders/all");
+});
+  //Info Page
+  router.get("/info", (req, res) => {
+    res.render("info");
+  });
+
+
   //Order Now - GET /restaurants/menu >> res.render - menu.ejs 
   router.get("/menu", (req, res) => {
     let menu = {};
@@ -52,8 +89,9 @@ module.exports = (knex) => {
 
   //Client confirmation Page
   router.get("/confirmation/:id", (req, res ) => {
-    let ref_no = req.param.id;
+    let ref_no = req.params.id;
     res.render("confirmation",{ref_no: ref_no});
+
   });
 //GET to /cart
   router.get("/cart", (req, res) => {
@@ -80,8 +118,6 @@ module.exports = (knex) => {
         let description = items[item].description;
         let price = items[item].price;
         let id = items[item].id;
-        console.log(rows);
-        console.log(rows[0].ref_no);
         knex('order_items')
         .insert({orders_id :rows[0], menu_items_id: id, name, quantity, price, description})
         .then()
@@ -103,13 +139,14 @@ module.exports = (knex) => {
   router.get("/orders/:ref_no", (req, res) => {
     let ref_no = req.params.ref_no;
     knex.from('orders')
-    .select('id','salesTax','subTotal', 'totalPrice')
+    .select('id','salesTax','subTotal', 'totalPrice', 'ready_time')
     .where('ref_no', ref_no)
     .then(rows => {
       var orders_id = rows[0].id;
       var salesTax = rows[0].salesTax;
       var totalPrice = rows[0].totalPrice;
       var subTotal = rows[0].subTotal;
+      var ready_time = rows[0].ready_time;
       knex.from('order_items')
       .select('*')
       .where('orders_id', orders_id)
@@ -119,7 +156,9 @@ module.exports = (knex) => {
           ref_no: ref_no, 
           salesTax: salesTax, 
           totalPrice:  totalPrice, 
-          subTotal:  subTotal 
+          subTotal:  subTotal ,
+          ready_time: ready_time,
+          user : req.session.user_id
         });
       });
     });
@@ -128,11 +167,16 @@ module.exports = (knex) => {
   //Sending ready_time to customer
   router.post("/orders/:ref_no", (req, res) => {
     let ref_no = req.params.ref_no;
+    console.log(ref_no);
     let ready_time = req.body.ready_time  
     ready_time = moment().add(ready_time, 'minutes').format('lll');
+    console.log(ready_time);
     knex('orders')
-    .where({ref_no, ref_no})
-    .update({ready_time, ready_time})
+    .where({'ref_no': ref_no})
+    .update({'ready_time': ready_time})
+    .then()
+    .catch(err => console.log(err.message))
+    
     
     
     
