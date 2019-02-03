@@ -16,12 +16,13 @@
       flex-wrap: wrap;
   }
   &__item{
-    width: 45%;
-    margin: 2rem;
+    width: 27%;
+    margin-right: 3rem;
+    margin-left: 3rem;
 
     & img{
-      width: 50rem;
-      height: 45rem;
+      width: 33rem;
+      height: 52rem;
       object-fit: cover;
     }
     
