@@ -40,9 +40,6 @@ app.use(express.static("public"));
 // Mount all resource routes
 app.use("/restaurants", usersRoutes(knex));
 
-
-
-
 //Contacts Page
 app.get("/contacts", (req, res) => {
   res.render("contacts");
