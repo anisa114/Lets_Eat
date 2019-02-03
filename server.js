@@ -28,7 +28,7 @@ app.use(morgan('dev'));
 // Log knex SQL queries to STDOUT as well
 app.use(knexLogger(knex));
 
-app.set("view engine", "ejs");
+app.set("view engine", "ejs");  
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use("/styles", sass({
   src: __dirname + "/styles",
@@ -46,12 +46,12 @@ app.get("/", (req, res) => {
   res.render("index");
 });
 
-//Contacts Page
+//Contacts Page (Let's-Eat)
 app.get("/contacts", (req, res) => {
   res.render("contacts");
 });
 
-//Info Page
+//Info Page (About Restaurant)
 app.get("/restaurants/info", (req, res) => {
   res.render("info");
 });
