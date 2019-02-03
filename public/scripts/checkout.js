@@ -31,9 +31,7 @@ const generateOrders = (cart) =>{
 
 function submitOrder(submit){
   const data = JSON.parse(localStorage.getItem('items'));
-  console.log(data);
   cartCount();
-  console.log("Button clicked ajax");
   $.ajax({
     type: "POST",
     url: "/restaurants/cart",

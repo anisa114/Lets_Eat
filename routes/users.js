@@ -14,7 +14,6 @@ router.use(cookieSession({
 }));
 
  //Twillio message 
-
 const accountSid = process.env.TWILIO_ACCOUNT_SID
 const authToken = process.env.TWILIO_AUTH_TOKEN
 const client = require('twilio')(accountSid, authToken);
@@ -72,17 +71,12 @@ module.exports = (knex) => {
     let menu = {};
     knex('categories').select()
     .then(categories => {
-      // console.log(categories);
       knex('menu_items').select()
       .then(menu_items => {
-        // console.log(menu_items);
         categories.forEach(catObj => {
-          // console.log(catObj.id);
           let menu_array = menu_items.filter(menu_items => menu_items.categories_id === catObj.id ) 
-          // console.log(menu_array);
           menu[catObj.name] = menu_array;
         })
-        // console.log(menu);
         res.render("menu.ejs", {menu: menu});
       })
       .catch(err => console.log(err.message))
@@ -170,10 +164,8 @@ module.exports = (knex) => {
   //Sending ready_time to customer
   router.post("/orders/:ref_no", (req, res) => {
     let ref_no = req.params.ref_no;
-    console.log(ref_no);
     let ready_time = req.body.ready_time  
     ready_time = moment().add(ready_time, 'minutes').format('lll');
-    console.log(ready_time);
     knex('orders')
     .where({'ref_no': ref_no})
     .update({'ready_time': ready_time})
@@ -195,7 +187,6 @@ module.exports = (knex) => {
 
   //Route to display ready_time (Timer)
   router.get("/ready/:ref_no", (req, res) => {
-    console.log("AJAX GET REQUEST SERVER SIDE");
     let ref_no = req.params.ref_no;
     knex
   .from('orders')
@@ -203,7 +194,6 @@ module.exports = (knex) => {
   .where({ref_no: ref_no})
   .then(rows => {
     let ready_time = rows[0].ready_time;
-    console.log(ready_time);
     res.json({ready_time: ready_time});
   })
   .catch(err => console.log(err.message))
