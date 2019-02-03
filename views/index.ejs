@@ -9,18 +9,25 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
     
   </head>
-
+  <% include partials/_head%>
   <body>
-    <header class="header">
-      <nav class="nav">
-        <p class="nav__logo">Let's<span class="nav__logo--sub">Eat</span></p>
-        <ul class="nav__items">
-          <li class="nav__item"><a href="/restaurants">Home</a></li>
-          <li class="nav__item"><a href="/contact">Contact Us</a></li>
-          <li class="nav__item"><a href="/cart">Cart</a></li>
-        </ul>
-      </nav>
+      <% include partials/_header%>
     </header>
     <script type="text/javascript" src="/scripts/app.js"></script>
+    
+    <div class="nav-clear" class ="contact">
+      <a href="/restaurants/menu">Order Now</a>
+      <a href="/restaurants/info">Info</a>
+    </div> 
+      <div class=box class ="nav-clear">
+          <h2 class = "title">Fresh on Crawford</h2>
+          <a href="/restaurants/menu">Order Now</a>
+          <a href="/restaurants/info">Info</a>
+            
+              
+              
+        </form>
+       </div>
+  
   </body>
 </html>

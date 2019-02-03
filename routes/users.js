@@ -38,7 +38,7 @@ module.exports = (knex) => {
 
   // Home page
   router.get("/", (req, res) => {
-    res.send("User Home Page")
+    res.render("index")
   });
 
   //Owner all orders page
