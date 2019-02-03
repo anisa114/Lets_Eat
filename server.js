@@ -48,15 +48,12 @@ app.get("/contacts", (req, res) => {
   res.render("contacts");
 });
 
-<<<<<<< HEAD
 //Info Page (About Restaurant)
 app.get("/restaurants/info", (req, res) => {
   res.render("info");
 });
 
 
-=======
->>>>>>> 3112aefee22dc08a0496c2e772666409a1491424
 app.listen(PORT, () => {
   console.log("Example app listening on port " + PORT);
 });
