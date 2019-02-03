@@ -1,5 +1,4 @@
 //Creating a temp array that stores cart items
-var cart = !localStorage.getItem('items') ? [] : JSON.parse(localStorage.getItem('items'));
 const addToCart = (element) => {
   const btnEl = $(element)
   const id = btnEl.siblings('.menu__item-id').text();
@@ -17,7 +16,7 @@ const addToCart = (element) => {
   }
   const ls = JSON.parse(localStorage.getItem('items'));
   if (isPresent (ls, name)) {
-    cart = ls.map(item => {
+    const cart = ls.map(item => {
       if (item.name === name) {
         item.quantity += quantity
         return item
@@ -25,10 +24,10 @@ const addToCart = (element) => {
       return item;
     })
     localStorage.setItem('items', JSON.stringify(cart))
-    return 
+    return;
   }
-  cart.push(item);
-  localStorage.setItem('items', JSON.stringify(cart))
+  ls.push(item);
+  localStorage.setItem('items', JSON.stringify(ls))
 }
 
 function isPresent (data, itemName) {
