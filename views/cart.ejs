@@ -1,30 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>Home Page</title>
-
-    <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-    <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
-    <!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script> -->
-  </head>
-
+<% include partials/_head%>
   <body>
-    <header class="header">
-      <nav class="nav">
-        <p class="nav__logo">Let's<span class="nav__logo--sub">Eat</span></p>
-        <ul class="nav__items">
-          <li class="nav__item"><a href="/restaurants">Home</a></li>
-          <li class="nav__item"><a href="/contact">Contact Us</a></li>
-          <li class="nav__item" id="cart"><a href="/cart">Cart</a></li>
-        </ul>
-      </nav>
-    </header>
-
-    <button class="btn btn-primary" onclick="handleClick(this)">Submit Order</button>
-    <section class="order__items">
+    <% include partials/_header%>
+    <section class="order__items nav-clear">
     </section>
-
+    <button class="btn btn-primary" onclick="submitOrder(this)">Submit Order</button>
     <script type="text/javascript" src="/scripts/app.js"></script>
     <script type="text/javascript" src="/scripts/checkout.js"></script>
   </body>

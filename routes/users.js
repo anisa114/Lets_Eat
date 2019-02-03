@@ -51,21 +51,9 @@ module.exports = (knex) => {
   });
 
   //Client confirmation Page
-  router.get("/confirmation", (req, res ) => {
-
-    //Get the last ref_no
-    knex('orders').
-    max('id')
-    .then(rows => {
-      let max_id = rows[0].max;
-      knex('orders')
-      .select('ref_no')
-      .where('id', max_id)
-      .then(rows =>{
-        let ref_no = rows[0].ref_no;
-        res.render("confirmation",{ref_no: ref_no});
-      })
-    })
+  router.get("/confirmation/:id", (req, res ) => {
+    let ref_no = req.param.id;
+    res.render("confirmation",{ref_no: ref_no});
   });
 //GET to /cart
   router.get("/cart", (req, res) => {
@@ -107,7 +95,7 @@ module.exports = (knex) => {
       body: ownerMessage(ref_no)
       })
       .then((message) => console.log(message.sid));
-      res.json({status: "Success", redirect: '/restaurants/confirmation'});
+      res.json({status: "Success", redirect: `/restaurants/confirmation/${ref_no}`});
   });
 
    

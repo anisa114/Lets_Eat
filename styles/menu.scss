@@ -1,0 +1,30 @@
+.page-container{
+  max-width: 1140px;
+  margin: 0 auto;
+}
+.menu{
+  &__container{
+    position: relative;
+  }
+
+  &__category{
+    color: $color-primary;
+    font-size: 4rem;
+  }
+  &__items{
+      display: flex;
+      flex-wrap: wrap;
+  }
+  &__item{
+    width: 45%;
+    margin: 2rem;
+
+    & img{
+      width: 50rem;
+      height: 45rem;
+      object-fit: cover;
+    }
+    
+  }
+}
+

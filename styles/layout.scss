@@ -1,24 +1,6 @@
 html{
   font-size: 62.5%;
 }
-
-.header{
-  padding: 2rem 4rem;
-  font-size: 2.5rem;
-  background-color: rgb(130, 136, 223);
-  & .nav{
-    display: flex;
-    justify-content: space-between;
-
-    &__items{
-      display: flex;
-      list-style: none;
-      margin-top: 1rem;
-    }
-
-    &__item{
-      margin-left: 3rem;
-    }
-  }
-
-}
+@import 'variables.scss';
+@import 'menu';
+@import 'nav';

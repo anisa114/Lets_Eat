@@ -12,6 +12,7 @@ const addToCart = (element) => {
     let cart = []
     cart.push(item);
     localStorage.setItem('items', JSON.stringify(cart));
+    cartCount();
     return;
   }
   const ls = JSON.parse(localStorage.getItem('items'));
@@ -24,10 +25,12 @@ const addToCart = (element) => {
       return item;
     })
     localStorage.setItem('items', JSON.stringify(cart))
+    cartCount();
     return;
   }
   ls.push(item);
   localStorage.setItem('items', JSON.stringify(ls))
+  cartCount();
 }
 
 function isPresent (data, itemName) {
@@ -47,11 +50,17 @@ function salesTax () {
 function totalPrice () {
   return subTotal() + salesTax();
 }
-//Adding click event listener to cart button
-$( "#cart" ).click(function() {
-  //Persist the cart array to to Local storage
-  localStorage.setItem('items', JSON.stringify(cart));
-});
-//Remove item from cart 
+
+function cartCount(){
+  let itemCount = !!localStorage.getItem('items') ? JSON.parse(localStorage.getItem('items')).length : undefined;
+  $('#cart-count').text(!!itemCount ? itemCount : '');
+  if (!itemCount) {
+    $('#cart-count').hide('slow')
+  } else {
+    $('#cart-count').show('swing')
+  }
+}
+
+cartCount();
 
 

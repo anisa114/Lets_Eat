@@ -20,15 +20,20 @@ const loadOrder = (item) => {
     </div>
   </article>`)}
 const generateOrders = (cart) =>{
+  if (cart === null) {
+    return
+  }
   $('.order__items').empty();
   for (item of cart) {
     $('.order__items').append(loadOrder(item));
   }
 }
 
-function handleClick(submit){
+function submitOrder(submit){
   var data = JSON.parse(localStorage.getItem('items'));
   console.log(data);
+  localStorage.clear();
+  cartCount();
   console.log("Button clicked ajax");
   $.ajax({
     type: "POST",
@@ -40,9 +45,8 @@ function handleClick(submit){
         success: function(data){ 
           if (data.status === "Success") {
             window.location = data.redirect;
-        }
-          
-        }
+         }
+      }
   });
 };
 
@@ -61,6 +65,7 @@ function deleteBtn (el) {
   let name = btnDiv.siblings('.item-name-desc').find('.item-name').text();
   cart = removeItem(cart, name)
   localStorage.setItem('items', JSON.stringify(cart));
+  cartCount();
   generateOrders(cart);
 }
 
@@ -83,4 +88,5 @@ function updateItem(name, newQuantity){
 
 $(document).ready(function () {
   generateOrders(items);
+  cartCount();
 })
