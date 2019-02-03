@@ -4,28 +4,134 @@
 }
 .menu{
   &__container{
-    position: relative;
+    max-width: 1140px;
+    margin: 0 auto;
   }
 
   &__category{
     color: $color-primary;
     font-size: 4rem;
+    border-bottom: 1px solid $color-primary;
+    margin-bottom: 5rem;
   }
   &__items{
       display: flex;
       flex-wrap: wrap;
+      justify-content: space-between
   }
   &__item{
-    width: 27%;
-    margin-right: 3rem;
-    margin-left: 3rem;
+    width: 30%;
+    height: 52rem;
+    margin: 4rem 0;
+    perspective: 150rem;
+    position: relative;
+    -moz-perspective: 150rem;
+    -webkit-backface-visibility: hidden;
 
-    & img{
-      width: 33rem;
-      height: 52rem;
-      object-fit: cover;
+    &-front{
+      color: #fff;
+      position: absolute;
+      top:0;
+      left:0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+      transition: all .8s ease;
+      border-radius: 6px;
+      box-shadow: 0 1.5rem 4rem rgba(#111, .15);
+    }
+
+    &-back{
+      position: absolute;
+      background-color: $color-primary;
+      height: 100%;
+      width: 100%;
+      top:0;
+      left:0;
+      overflow: hidden;
+      padding: 4rem;
+      color: #fff;
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+      background-image: linear-gradient(to right bottom, #28b485, #68c868);
+      transform: rotateY(180deg);
+      transition: all .8s ease;
+      border-radius: 6px;
+      box-shadow: 0 1.5rem 4rem rgba(#111, .15);
+    }
+
+
+    &:hover &-front{
+      transform: rotateY(-180deg);
+    }
+    &:hover &-back{
+      transform: rotateY(0deg);
+    }
+
+    &-title{
+      height: 10rem;
+      width: 100%;
+      transform: translateY(-10rem);
+      background-color: rgba(51, 51, 51, .5);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    &-img{
+      // width: 100%;
+      height: 100%;
+      background-repeat: no-repeat;
+      // background-attachment: fixed;
+      background-position: center; 
+      background-size:cover
     }
     
+    &-name{
+      margin-bottom: 4rem;
+      font-size: 2.6rem;
+    }
+    &-price{
+      font-size: 1.8rem;
+    }
+
+    &-description{
+      font-size: 1.6rem;
+      margin-bottom: 3rem;
+    }
+
+    &-quantity{
+      font-size: 1.8rem;
+      margin-right: .3rem;
+      position: absolute;
+      bottom: 13.7rem;
+      left: 5rem;
+    }
+
+    &-input{
+      font-size: 1.8rem;
+      margin-right: 1rem;
+      border-radius: 3px;
+      border: none;
+      color: #555;
+      width: 10rem;
+      position: absolute;
+      bottom: 14rem;
+      right: 10rem;
+      text-align: center;
+      outline: none;
+    }
+
+    &-btn{
+      font-size: 1.8rem;
+      border-radius: 5rem;
+      display: block;
+      width: 80%;
+      margin: 3rem auto;
+      position: absolute;
+      bottom: 4rem;
+    }
   }
 }
 

@@ -2,7 +2,7 @@
 <% include partials/_head%>
   <body>
     <% include partials/_header%>
-    <section class="menu nav-clear">
+    <section class="menu nav-clear container">
       <!-- <article class="">
         <div id="list-example" class="list-group">
             <%for (categories in menu) {%>
@@ -17,13 +17,22 @@
                 <div class="menu__items">
                   <% for (item of menu[categories]) { %>
                     <div class="menu__item">
-                      <img src="<%=item.image_url%>" alt="<%=item.name%>">
-                      <span hidden class="menu__item-id"><%=item.id%></span>
-                      <h3 class="menu__item-name"><%=item.name%></h3>
-                      <p class="menu__item-price"><%=item.price%></p>
-                      <p class="menu__item-description"><%=item.description%></p>
-                      <label for="<%=item.name%>">Quantity</label><input type="number" min="1" max="15" class="quantity" id="<%=item.name.split(' ').join('').toLowerCase()%>">
-                      <button onclick="addToCart(this)" class="btn btn-success">Add to cart</button>
+                      <div class="menu__item-front">
+                        <!-- <img src="<%=item.image_url%>" alt="<%=item.name%>"> -->
+                        <div class="menu__item-img" style='background-image:url("<%=item.image_url%>")'></div>
+                        <div class="menu__item-title">
+                          <h3 class="menu__item-name--front"><%=item.name%></h3>
+                        </div>
+                      </div>
+                      <div class="menu__item-back">
+                        <span hidden class="menu__item-id"><%=item.id%></span>
+                        <h3 class="menu__item-name"><%=item.name%></h3>
+                        <p class="menu__item-price">$ <%=item.price%></p>
+                        <p class="menu__item-description"><%=item.description%></p>
+                        <label class="menu__item-quantity" for="<%=item.name%>">Quantity:</label>
+                        <input type="number" min="1" max="15" class="quantity menu__item-input" id="<%=item.name.split(' ').join('').toLowerCase()%>">
+                        <button onclick="addToCart(this)" class="btn btn-success menu__item-btn">Add to cart</button>
+                      </div>
                     </div>
                   <% } %> 
                 </div>
