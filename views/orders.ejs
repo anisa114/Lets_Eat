@@ -1,22 +1,10 @@
-<!DOCTYPE html>
- <html> 
-     <head> 
-     </head>
 
+<% include partials/_head%>
   <body> 
-    <header class="header">
-        <nav class="nav">
-          <p class="nav__logo">Let's<span class="nav__logo--sub">Eat</span></p>
-          <ul class="nav__items">
-            <li class="nav__item"><a href="/restaurants">Home</a></li>
-            <li class="nav__item"><a href="/contact">Contact Us</a></li>
-            <li class="nav__item" id="cart"><a href="/cart">Cart</a></li>
-          </ul>
-        </nav> 
-    </header> 
+   
+    <% include partials/_header%>   
     
-    
-    <article class="order-container"> 
+    <article class="order-container nav-clear"> 
         <h3> Order #<%=ref_no%> </h3>
         <% for (var order in order_items) { %>
             <h4><%=order_items[order].name%></h4>

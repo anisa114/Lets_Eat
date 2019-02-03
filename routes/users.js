@@ -129,7 +129,7 @@ module.exports = (knex) => {
       })
       .catch(err => console.log(err.message));
       client.messages.create({
-        to: '2897000872',
+        to: '6475718122',
         from:'12898125908',//Twillio Phone number
         body: ownerMessage(ref_no)
         })
@@ -179,8 +179,7 @@ module.exports = (knex) => {
     .update({'ready_time': ready_time})
     .then()
     .catch(err => console.log(err.message))
-    
-    
+
     client.messages.create({
       to: '6477748487',
       from:'12898125908',//Twillio Phone number
@@ -191,6 +190,7 @@ module.exports = (knex) => {
       function readytimeMessage(){
         return `Hey Shah, your order will be ready in ${ready_time}`
       }
+      res.redirect(`/restaurants/orders/${ref_no}`);
   });
 
   //Route to display ready_time (Timer)

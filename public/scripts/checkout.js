@@ -30,7 +30,7 @@ const generateOrders = (cart) =>{
 }
 
 function submitOrder(submit){
-  var data = JSON.parse(localStorage.getItem('items'));
+  const data = JSON.parse(localStorage.getItem('items'));
   console.log(data);
   cartCount();
   console.log("Button clicked ajax");
@@ -41,13 +41,12 @@ function submitOrder(submit){
         subTotal: subTotal(),
         salesTax: salesTax(),
         totalPrice: totalPrice() }, 
-        success: function(data){ 
-          if (data.status === "Success") {
-            window.location = data.redirect;
-            localStorage.clear();
+        success: function(res){ 
+          if (res.status === "Success") {
+            window.location = res.redirect;
          }
       }
-  });
+  }).done();
 };
 
 function removeItem(cart, name){
