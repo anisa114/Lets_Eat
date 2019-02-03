@@ -39,11 +39,22 @@ app.use(express.static("public"));
 
 // Mount all resource routes
 app.use("/restaurants", usersRoutes(knex));
+
+
+
+
 //Contacts Page (Let's-Eat)
 app.get("/contacts", (req, res) => {
   res.render("contacts");
 });
 
+//Info Page (About Restaurant)
+app.get("/restaurants/info", (req, res) => {
+  res.render("info");
+});
+
+
 app.listen(PORT, () => {
   console.log("Example app listening on port " + PORT);
 });
+

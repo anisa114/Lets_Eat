@@ -37,8 +37,13 @@ module.exports = (knex) => {
 
   // Home page
   router.get("/", (req, res) => {
+<<<<<<< HEAD
     res.render("index");
     });
+=======
+    res.render("index")
+  });
+>>>>>>> origin/feature/html
 
   //Owner all orders page
   router.get("/orders/all", (req, res) => {
