@@ -43,7 +43,11 @@ module.exports = (knex) => {
 
   //Owner all orders page
   router.get("/orders/all", (req, res) => {
+    if(req.session.user_id === "owner"){
     res.send("All the orders")
+    } else {
+      res.send("Access Denied");
+    }
   });
 
   //User Login
@@ -176,8 +180,6 @@ router.get("/owner", (req, res) => {
     .update({'ready_time': ready_time})
     .then()
     .catch(err => console.log(err.message))
-    
-    
     
     
     // client.messages.create({
