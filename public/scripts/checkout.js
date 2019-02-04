@@ -1,7 +1,7 @@
 
 let items = JSON.parse(localStorage.getItem('items'));
 const loadOrder = (item) => {
-  return (`<article>
+  return (`<article class="order__item">
     <div class="item-name-desc">
       <h3 class="item-name">${item.name}</h3>
       <p class="item-desc">${item.description}</p>
@@ -27,6 +27,15 @@ const generateOrders = (cart) =>{
   for (item of cart) {
     $('.order__items').append(loadOrder(item));
   }
+  $('.order__price').append(`<article class="order__price-container">
+    <p class="order__subtotal">Subtotal: <span>$${round(subTotal())}</span></p>
+    <p class="order__taxes">Tax: <span>$${round(salesTax())}</span></p>
+    <p class="order__total">Total: <span>$${round(totalPrice())}</span></p>
+    </article>`)
+}
+
+function round(num) {
+  return Math.round((num + 0.00001) * 100) / 100
 }
 
 function submitOrder(submit){
