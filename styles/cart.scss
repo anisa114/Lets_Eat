@@ -1,0 +1,102 @@
+.cart{
+  padding-top: 20rem;
+  text-align: center;
+
+  &__header{
+    font-size: 4rem;
+    color: $color-primary;
+  }
+}
+
+.order{
+
+  &__items{
+    // width: 100%;
+    margin: 5rem auto 0;
+  }
+
+  &__item{
+    display: flex;
+    justify-content: space-between;
+    padding: 3rem 2rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ccc;
+    align-items: center;
+    @media only screen and (max-width: $bp-medium) {
+      padding: 1rem;
+      align-items: flex-start
+    }
+    
+    &-price{
+      &-header{
+        font-size: 2.2rem;
+      }
+      &-amount{
+        font-size: 2rem;
+        &::before{
+          content: "$ ";
+        }
+      }
+    }
+  }
+
+  &__price-container{
+    margin-top: 7rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    font-size: 2rem;
+  }
+
+  &__button{
+    font-size: 2rem;
+    border-radius: 5px;
+    margin-top: 2rem;
+    float: right;
+  }
+}
+
+h3.item-quantity-header{
+  font-size: 2.2rem;
+}
+input.item-quantity{
+  border: 1px solid $color-primary;
+  width: 100%;
+  font-size: 1.6rem;
+  text-align: center;
+  border-radius: 5px;
+}
+
+div.item-name-desc{
+  width: 40%;
+  @media only screen and (max-width: $bp-medium) {
+    width: 30%;
+  }
+}
+
+h3.item-name{
+  font-size: 2.2rem;
+}
+
+p.item-desc{
+  font-size: 1.6rem;
+}
+
+div.buttons{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+button.updateBtn{
+  margin-bottom: 1rem;
+  font-size: 1.6rem;
+  width: 100%;
+  border-radius: 5px;
+}
+
+button.deleteBtn{
+  font-size: 1.6rem;
+  width: 100%;
+  border-radius: 5px;
+}
+

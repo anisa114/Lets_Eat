@@ -1,7 +1,8 @@
-html{
-  font-size: 62.5%;
-}
-@import 'variables.scss';
+@import 'variables';
+@import 'base';
 @import 'menu';
 @import 'nav';
 @import 'home';
+@import 'cart';
+@import 'confirmation';
+@import 'all';

@@ -1,16 +1,18 @@
 <% include partials/_head%>
   <body>
-    <% include partials/_header%>
+    <% include partials/_header2%>
 
-    <section class="nav-clear">
-           <% for (let order of orders) {  %>
-                <h4>Order No : # <%= order.ref_no %></h4>
-                <h4>Total Items : <%= orders.length %></h4>
-                <h4>Time of Order: <%= order.ready_time%></h4>
-                <h4>Subtotal : <%= order.subTotal %></h4>
-            <a href="/restaurants/orders/<%= order.ref_no %>">View order</a>
-          <%  } %>
-          
+    <section class="nav-clear container">
+      <h1 class="owner-orders__header">All Orders</h1>
+      <% for (let order of orders) {  %>
+        <div class="owner-orders">
+          <p class="owner-orders__no">Order No : # <%= order.ref_no %></p>
+          <p class="owner-orders__items">Total Items : <%= orders.length %></p>
+          <p class="owner-orders__time">Time of Order: <%= order.ready_time ? order.ready_time : 'pending'%></p>
+          <p class="owner-orders__total">Subtotal : $<%= Math.round((order.subTotal  + 0.00001) * 100) / 100%></p>
+          <a href="/restaurants/orders/<%= order.ref_no %>" class="owner-orders__link">View order</a>
+        </div>
+      <%  } %>
     </section>
     <!-- <script type="text/javascript" src="/scripts/confirmation.js"></script> -->
   </body>
