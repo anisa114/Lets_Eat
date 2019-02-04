@@ -1,0 +1,46 @@
+.info{
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  justify-content: center;
+  &__header{
+    font-size: 4rem;
+    color: $color-primary;
+    margin-bottom: 2rem;
+  }
+  &__description{
+    font-size: 2rem;
+  }
+  &__contact{
+    font-size: 1.6rem;
+    margin-top: 2rem;
+    font-weight: 700;
+    &-desc a:link,
+    &-desc a:visited{
+      color: $color-primary;
+    }
+  }
+}
+
+.contact{
+  padding-top: 15rem;
+  &__header{
+    font-family: $font1;
+    font-size: 4rem;
+  }
+  &__color{
+    color: $color-primary;
+  }
+
+  &__container{
+    margin-top: 5rem;
+    font-size: 2rem;
+    & i{
+      color: $color-primary;
+    }
+  }
+
+  &__title{
+    font-size: 3rem;
+  }
+}
