@@ -42,7 +42,16 @@ module.exports = (knex) => {
   //Owner all orders page
   router.get("/orders/all", (req, res) => {
     if(req.session.user_id === "owner"){
-    res.send("All the orders")
+
+      //Retrive all orders from table
+      knex
+      .from('orders')
+      .select('*')
+      .then(orders => { 
+        console.log(orders);
+        res.render("orders_all", {orders: orders});
+      })
+      .catch(err => console.log(err.message))
     } else {
       res.send("Access Denied");
     }
@@ -200,6 +209,7 @@ module.exports = (knex) => {
 
   });
 
+  
 
   return router;
 }

@@ -1,0 +1,18 @@
+<% include partials/_head%>
+  <body>
+    <% include partials/_header%>
+
+    <section class="nav-clear">
+           <% for (let order of orders) {  %>
+                <h4>Order No : # <%= order.ref_no %></h4>
+                <h4>Total Items : <%= orders.length %></h4>
+                <h4>Time of Order: <%= order.ready_time%></h4>
+                <h4>Subtotal : <%= order.subTotal %></h4>
+            <a href="/restaurants/orders/<%= order.ref_no %>">View order</a>
+          <%  } %>
+          
+    </section>
+    <!-- <script type="text/javascript" src="/scripts/confirmation.js"></script> -->
+  </body>
+</html>
+

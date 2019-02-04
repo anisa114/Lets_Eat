@@ -23,6 +23,7 @@
         <% } else { %>
         <h1>Your order will be ready  <%= ready_time %></h1>
         <% } %>
+        <a href= "/restaurants/confirmation/<%=ref_no %>">View Timer</a>
     <% } %>
 
     <% if(user === "owner"){ %> 
