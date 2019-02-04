@@ -6,7 +6,7 @@ $(document).ready(function() {
  
   //Create a set interval function that fires an ajax request every 5 seconds
 
-  var intervalID = window.setInterval(ajaxRequest, 5000);
+  var intervalID = window.setInterval(ajaxRequest, 500);
 
   function ajaxRequest() {
     console.log("ajax get request client side");
@@ -20,10 +20,8 @@ $(document).ready(function() {
           let ready_time = response.ready_time;
           //If ready time exists
           if(ready_time !== null){
-            // //Append to page
-            // let readyTimer = $("<div></div>").text(ready_time);
-            // $('h4').append(readyTimer);
-
+            // Make the message disappear
+            $('.confirmation__temp').hide();
             //Start timer
             // Set the date we're counting down to
             var countDownDate = new Date(ready_time).getTime();

@@ -195,7 +195,7 @@ module.exports = (knex) => {
       .then((message) => console.log(message.sid));
     
       function readytimeMessage(){
-        return `Hey Shah, your order will be ready in ${ready_time}`
+        return `Thank you for choosing Let's Eat, your order will be ready in ${ready_time}`
       }
       res.redirect(`/restaurants/orders/${ref_no}`);
   });
