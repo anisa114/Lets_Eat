@@ -20,9 +20,8 @@ $(document).ready(function() {
           let ready_time = response.ready_time;
           //If ready time exists
           if(ready_time !== null){
-            // //Append to page
-            // let readyTimer = $("<div></div>").text(ready_time);
-            // $('h4').append(readyTimer);
+            // hiding update message
+            $('.confirmation__temp').hide();
 
             //Start timer
             // Set the date we're counting down to
