@@ -48,6 +48,12 @@ module.exports = (knex) => {
       .from('orders')
       .select('*')
       .then(orders => { 
+        orders.sort(
+          (a, b) => {
+            if (a.ready_time === null) return -1; 
+            if(b.ready_time > a.ready_time) return -1; 
+            return 1
+          })
         console.log(orders);
         res.render("orders_all", {orders: orders});
       })

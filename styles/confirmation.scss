@@ -1,0 +1,92 @@
+.confirmation{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  &__header{
+    font-size: 6rem;
+    color: $color-primary;
+    margin-bottom: 5rem;
+  }
+  
+  &__ref{
+    font-size: 3rem;
+  }
+
+  &__temp{
+    font-size: 2rem;
+    margin-top: 1rem;
+  }
+
+  
+
+  &__link{
+    font-size: 3rem;
+    margin-top: 2rem;
+    text-decoration: underline;
+  }
+}
+
+#demo{
+  margin-top: 2rem;
+  font-size: 4rem;
+  color: darken($color-primary, 5%);
+}
+
+.cust{
+  &__order{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  justify-content: center;
+  }
+  &__ref-no{
+    font-size: 4em;
+    color: $color-primary;
+    margin-bottom: 5rem;
+  }
+  &__item{
+    font-size: 2rem;
+    border: 1px solid #ddd;
+    padding: 2rem;
+    margin: 1rem;
+    min-height: 18rem;
+  }
+  &__ready{
+    margin-top: 2rem;
+    font-size: 3rem;
+  }
+  &__link{
+    font-size: 3rem;
+    margin-top: 2rem;
+    text-decoration: underline;
+  }
+  &__container{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+  }
+
+  &__flex{
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+  }
+
+  &__timer{
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__update{
+    font-size: 2rem;
+  }
+}
+
+div.pricing{
+  font-size: 1.6rem;
+  // align-self: flex-end;
+  // display: flex;
+}

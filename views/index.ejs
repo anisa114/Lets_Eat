@@ -1,21 +1,18 @@
 <% include partials/_head%>
   <body>
       <% include partials/_header%>
-    <script type="text/javascript" src="/scripts/app.js"></script>
-    
-    <div class="nav-clear" class ="contact">
-      <a href="/restaurants/menu">Order Now</a>
-      <a href="/restaurants/info">Info</a>
-    </div> 
-      <div class=box class ="nav-clear">
-          <h2 class = "title">Fresh on Crawford</h2>
-          <a href="/restaurants/menu">Order Now</a>
-          <a href="/restaurants/info">Info</a>
-            
-              
-              
-        </form>
-       </div>
-  
+      <section class="home nav-clear container">
+        <article class="home__widget">
+          <div class="home__background"></div>
+          <div class="home__shop">
+            <img class="home__image" src="../images/fresh-logo.png" alt="fresh logo">
+            <div class="home__details">
+              <h2 class="home__title">Fresh on Crawford</h2>
+              <a class="home__order"href="/restaurants/menu">Order Now</a>
+              <a class="home__info" href="/restaurants/info">Info</a>
+            </div>
+          </div>
+        </article>
+      </section>
   </body>
 </html>

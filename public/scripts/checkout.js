@@ -6,12 +6,12 @@ const loadOrder = (item) => {
       <h3 class="item-name">${item.name}</h3>
       <p class="item-desc">${item.description}</p>
     </div>
-    <div>
-      <h3>Price</h3>
-      <p>${item.price}</p>
+    <div class="order__item-price">
+      <h3 class="order__item-price-header">Price</h3>
+      <p class="order__item-price-amount">${item.price}</p>
     </div>
     <div class="item-quantity-div">
-      <h3>Quantity</h3>
+      <h3 class="item-quantity-header">Quantity</h3>
       <input type="number" min="1" max="15" class="item-quantity" value=${item.quantity}>
     </div>
     <div class="buttons">
@@ -24,14 +24,19 @@ const generateOrders = (cart) =>{
     return
   }
   $('.order__items').empty();
+  $('.order__price').empty();
   for (item of cart) {
     $('.order__items').append(loadOrder(item));
   }
-  $('.order__price').append(`<article class="order__price-container">
-    <p class="order__subtotal">Subtotal: <span>$${round(subTotal())}</span></p>
-    <p class="order__taxes">Tax: <span>$${round(salesTax())}</span></p>
-    <p class="order__total">Total: <span>$${round(totalPrice())}</span></p>
-    </article>`)
+  $('.order__price').append(appendPrice())
+}
+
+function appendPrice() {
+  return (`<article class="order__price-container container">
+  <p class="order__subtotal">Subtotal: <span>$${round(subTotal())}</span></p>
+  <p class="order__taxes">Tax: <span>$${round(salesTax())}</span></p>
+  <p class="order__total">Total: <span>$${round(totalPrice())}</span></p>
+  </article>`)
 }
 
 function round(num) {
@@ -79,8 +84,10 @@ function deleteBtn (el) {
 function updateBtn (el) {
   let btnDiv = $(el).closest('.buttons')
   let name = btnDiv.siblings('.item-name-desc').find('.item-name').text();
-  let newQuantity = btnDiv.siblings('.item-quantity-div').find('.item-quantity').val();
+  let newQuantity = parseInt(btnDiv.siblings('.item-quantity-div').find('.item-quantity').val());
   updateItem(name, newQuantity);
+  let items = JSON.parse(localStorage.getItem('items'));
+  generateOrders(items);
 }
 function updateItem(name, newQuantity){
   let items = JSON.parse(localStorage.getItem('items'));

@@ -27,6 +27,13 @@
     position: relative;
     -moz-perspective: 150rem;
     -webkit-backface-visibility: hidden;
+    @media only screen and (max-width: $bp-large) {
+      width: 45%;
+    }
+    @media only screen and (max-width: $bp-small) {
+      width: 80%;
+      margin: 4rem auto;
+    }
 
     &-front{
       color: #fff;
@@ -104,7 +111,7 @@
     &-quantity{
       font-size: 1.8rem;
       margin-right: .3rem;
-      position: absolute;
+      // position: absolute;
       bottom: 13.7rem;
       left: 5rem;
     }
@@ -116,7 +123,7 @@
       border: none;
       color: #555;
       width: 10rem;
-      position: absolute;
+      // position: absolute;
       bottom: 14rem;
       right: 10rem;
       text-align: center;

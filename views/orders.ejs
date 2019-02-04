@@ -1,50 +1,57 @@
 
 <% include partials/_head%>
   <body> 
-   
-    <% include partials/_header%>   
+    <% if (user === "owner") { %>
+        <%include partials/_header2 %>
+    <%} else {%>
+    <% include partials/_header %>  
+    <% } %> 
     
-    <article class="order-container nav-clear"> 
-        <h3> Order #<%=ref_no%> </h3>
-        <% for (var order in order_items) { %>
-            <h4><%=order_items[order].name%></h4>
-            <h4>Price <%=order_items[order].price%></h4>
-            <h4>Quantity <%=order_items[order].quantity%></h4>
-      
-      <% } %>
-      
+    <article class= "nav-clear container cust__order"> 
+        <h3 class="cust__ref-no"> Order #<%=ref_no%> </h3>
+        <div class="cust__container">
+            <% for (var order in order_items) { %>
+            <div class="cust__item">
+                <p><%=order_items[order].name%></p>
+                <p>Price <%=order_items[order].price%></p>
+                <p>Quantity <%=order_items[order].quantity%></p>
+            </div>
+                <% } %>
+        </div>
+        <div class="cust__flex">
+            <div class="cust__timer">
+                <% if(user === "user"){ %>
+                    <%  if(!ready_time) { %>
+                    <p class="cust__update">We will update you with a pickup time shortly via SMS</p>
+                    <% } else { %>
+                    <p class="cust__update">Your order will be ready  <%= ready_time %></p>
+                    <% } %>
+                    <a class="cust__link" href= "/restaurants/confirmation/<%=ref_no %>">View Timer</a>
+                <% } %>
         
-    </article>
+            </div>
         
-
-    <% if(user === "user"){ %>
-        <%  if(!ready_time) { %>
-        <p>We will update you with a pickup time shortly via SMS</p>
-        <% } else { %>
-        <h1>Your order will be ready  <%= ready_time %></h1>
-        <% } %>
-        <a href= "/restaurants/confirmation/<%=ref_no %>">View Timer</a>
-    <% } %>
-
-    <% if(user === "owner"){ %> 
-       <% if(!ready_time){ %>
-        <form method="POST" action="/restaurants/orders/<%=ref_no %>">
-            <label for="ready_time">Please enter ready time:</label>
-            <input type="text" name="ready_time" id="ready_time">
-            <button type="submit">submit</button>
-        </form>
-        <% } else { %>
-        <h1>Ready time is: <%= ready_time %></h1>
-        <% } %>
-    <%  }  %>
-
-
-    <span class="pricing">
-        <p>Sub Total: <%=subTotal%> </p>
-        <p>Sales Tax: <%=salesTax%></p>
-        <p>Order Total: <%=totalPrice%></p>
-    </span>
-   
+            <% if(user === "owner"){ %> 
+                <% if(!ready_time){ %>
+                <form method="POST" action="/restaurants/orders/<%=ref_no %>">
+                    <label for="ready_time">Please enter ready time:</label>
+                    <input type="text" name="ready_time" id="ready_time">
+                    <button type="submit">submit</button>
+                </form>
+                <% } else { %>
+                <p class="cust__ready">Ready time is: <%= ready_time %></p>
+                <% } %>
+            <%  }  %>
+        
+        
+            <div class="pricing">
+                <p>Sub Total: $<%=Math.round((subTotal + 0.00001) * 100) / 100%> </p>
+                <p>Sales Tax: $<%=Math.round((salesTax + 0.00001) * 100) / 100%></p>
+                <p>Order Total: $<%=Math.round((totalPrice + 0.00001) * 100) / 100%></p>
+            </div>
+        </div>
+        
+    </article>  
   </body>
   </html>
 

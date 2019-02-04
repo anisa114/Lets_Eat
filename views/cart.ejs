@@ -1,10 +1,15 @@
 <% include partials/_head%>
   <body>
     <% include partials/_header%>
-    <section class="order__items nav-clear">
-    </section>
-    <section class="order__price"></section>
-    <button class="btn btn-primary" onclick="submitOrder(this)">Submit Order</button>
+    <div class="container">
+      <div class="cart container nav-clear">
+        <h1 class="cart__header">Here are all the healthy thing you've ordered!</h1>
+      </div>
+      <section class="order__items container">
+      </section>
+      <section class="order__price"></section>
+      <button class="btn btn-success order__button" onclick="submitOrder(this)">Submit Order</button>
+     </div>
     <script type="text/javascript" src="/scripts/app.js"></script>
     <script type="text/javascript" src="/scripts/checkout.js"></script>
   </body>
