@@ -23,9 +23,9 @@ module.exports = (knex) => {
 //Function that creates a random refernce number
   //https://stackoverflow.com/questions/1349404/generate-random-string-characters-in-javascript
   function makeid() {
-    var num = "";
-    var possible = "0123456789";
-      for (var i = 0; i < 10; i++)
+    let num = "";
+    let possible = "0123456789";
+      for (let i = 0; i < 10; i++)
       num += possible.charAt(Math.floor(Math.random() * possible.length));
       return parseInt(num);
   }
@@ -148,11 +148,11 @@ module.exports = (knex) => {
     .select('id','salesTax','subTotal', 'totalPrice', 'ready_time')
     .where('ref_no', ref_no)
     .then(rows => {
-      var orders_id = rows[0].id;
-      var salesTax = rows[0].salesTax;
-      var totalPrice = rows[0].totalPrice;
-      var subTotal = rows[0].subTotal;
-      var ready_time = rows[0].ready_time;
+      let orders_id = rows[0].id;
+      let salesTax = rows[0].salesTax;
+      let totalPrice = rows[0].totalPrice;
+      let subTotal = rows[0].subTotal;
+      let ready_time = rows[0].ready_time;
       knex.from('order_items')
       .select('*')
       .where('orders_id', orders_id)
