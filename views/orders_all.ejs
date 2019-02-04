@@ -5,16 +5,22 @@
     <section class="nav-clear container">
       <h1 class="owner-orders__header">All Orders</h1>
       <% for (let order of orders) {  %>
+       <% let id = order.orders_id %>
+        <% let totalItems = 0; %>
+         <%   orders.forEach(function (el) { %>
+          <%  if(el.orders_id === id){ %>
+            <%    totalItems++; %>
+              <%  } %>
+          <%  }); %>
         <div class="owner-orders">
           <p class="owner-orders__no">Order No : # <%= order.ref_no %></p>
-          <p class="owner-orders__items">Total Items : <%= orders.length %></p>
+          <p class="owner-orders__items">Total Items : <%= totalItems %></p>
           <p class="owner-orders__time">Time of Order: <%= order.ready_time ? order.ready_time : 'pending'%></p>
           <p class="owner-orders__total">Subtotal : $<%= Math.round((order.subTotal  + 0.00001) * 100) / 100%></p>
           <a href="/restaurants/orders/<%= order.ref_no %>" class="owner-orders__link">View order</a>
         </div>
       <%  } %>
     </section>
-    <!-- <script type="text/javascript" src="/scripts/confirmation.js"></script> -->
   </body>
 </html>
 
