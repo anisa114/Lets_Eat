@@ -22,6 +22,7 @@ $(document).ready(function() {
           if(ready_time !== null){
             // Make the message disappear
             $('.confirmation__temp').hide();
+          //  https://www.w3schools.com/howto/howto_js_countdown.asp
             //Start timer
             // Set the date we're counting down to
             var countDownDate = new Date(ready_time).getTime();
