@@ -46,7 +46,7 @@ module.exports = (knex) => {
       //Retrive all orders from table
       knex
       .from('orders')
-      .select('*')
+      .join('order_items', {'orders.id':'orders_id'})
       .then(orders => { 
         orders.sort(
           (a, b) => {
@@ -58,6 +58,7 @@ module.exports = (knex) => {
         res.render("orders_all", {orders: orders});
       })
       .catch(err => console.log(err.message))
+
     } else {
       res.send("Access Denied");
     }
