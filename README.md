@@ -14,7 +14,7 @@ This project was built in collaboration with @ShahjamalMalik @anisa114
     DB_PORT=5432
     TWILIO_ACCOUNT_SID= got from twilio
     TWILIO_AUTH_TOKEN= got from twilio
-    MY_PHONE_NUMBER= got from twilio ```
+    MY_PHONE_NUMBER= got from twilio 
 3. Run the development web server using the node 'npm run local' command
 
 ## Stack and Dependencies
